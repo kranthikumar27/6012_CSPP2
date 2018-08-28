@@ -6,7 +6,7 @@ public class Solution {
     /*
     Do not modify this main function.
     */
-    /**
+    /**.
      * { function_description }
      *
      * @param      args  The arguments
@@ -21,7 +21,7 @@ public class Solution {
     /*
     Need to write the rootsOfQuadraticEquation function and print the output.
     */
-    /**
+    /**.
      * { function_description }
      *
      * @param      a     { parameter_description }
