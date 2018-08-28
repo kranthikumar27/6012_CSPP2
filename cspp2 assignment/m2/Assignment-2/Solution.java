@@ -6,6 +6,7 @@ public final class Solution {
     /**
      * Constructs the object.
      */
+    public static final int FOUR = 4;
     private Solution() {
 
     }
@@ -32,8 +33,8 @@ public final class Solution {
      * @param      c     { parameter_description }
      */
     static void roots(final int a, final int b, final int c) {
-        double root1 = (-b + Math.sqrt((b * b) - 4 * a * c)) / (2 * a);
-        double root2 = (-b - Math.sqrt((b * b) - 4 * a * c)) / (2 * a);
+        double root1 = (-b + Math.sqrt((b * b) - FOUR * a * c)) / (2 * a);
+        double root2 = (-b - Math.sqrt((b * b) - FOUR * a * c)) / (2 * a);
         System.out.println(root1 + " " + root2);
 
     }
