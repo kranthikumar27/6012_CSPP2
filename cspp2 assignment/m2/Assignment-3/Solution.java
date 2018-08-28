@@ -30,7 +30,7 @@ public class Solution {
 	 *
 	 * @return     { description_of_the_return_value }
 	 */
-	static int power(final int b, final int e) {
+	static long power(final int b, final int e) {
 		if (e == 0) {
 			return 1;
 			}
