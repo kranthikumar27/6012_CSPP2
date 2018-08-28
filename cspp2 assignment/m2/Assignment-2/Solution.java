@@ -3,9 +3,9 @@ import java.util.Scanner;
  * Class for solution.
  */
 public class Solution {
-    /*
-    Do not modify this main function.
-    */
+    private Solution() {
+
+    }
     /**.
      * { function_description }
      *
