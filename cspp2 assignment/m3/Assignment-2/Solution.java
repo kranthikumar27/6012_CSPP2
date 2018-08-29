@@ -8,13 +8,12 @@ import java.util.Scanner;
  */
 public class Solution {
 /* Fill the main function to print the number of 7's between 1 to n*/
-    /**
+    /**.
      * { function_description }
      *
      * @param      args  The arguments
      */
     public static void main(String[] args) {
-
         Scanner s = new Scanner(System.in);      
         int n = s.nextInt();
         int count = 0;
@@ -28,6 +27,5 @@ public class Solution {
             }
         }
         System.out.println(count);
-    }
-            
+    }         
 }
