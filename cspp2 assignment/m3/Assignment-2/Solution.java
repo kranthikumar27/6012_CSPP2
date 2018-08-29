@@ -20,14 +20,14 @@ public final class Solution {
      * @param      args  The arguments
      */
     public static void main(final String[] args) {
-        Scanner s = new Scanner(System.in); 
+        Scanner s = new Scanner(System.in);
         int n = s.nextInt();
         final int value = 10;
         final int number = 7;
         int count = 0;
         for (int i = 1; i <= n; i++) {
             int remainder = 0;
-            for(int j = i; j > 0; j = j / value) {
+            for (int j = i; j > 0; j = j / value) {
                 remainder = j % value;
                 if (remainder == number) {
                     count += 1;
