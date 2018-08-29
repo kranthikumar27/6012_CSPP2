@@ -6,7 +6,7 @@ import java.util.Scanner;
 /**
  * Class for solution.
  */
-public class Solution {
+public final class Solution {
     /**
      * Constructs the object.
      */
@@ -19,11 +19,11 @@ public class Solution {
      *
      * @param      args  The arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         Scanner s = new Scanner(System.in); 
         int n = s.nextInt();
-        int value = 10;
-        int number = 7;
+        final int value = 10;
+        final int number = 7;
         int count = 0;
         for (int i = 1; i <= n; i++) {
             int remainder = 0;
