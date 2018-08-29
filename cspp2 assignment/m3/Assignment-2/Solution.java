@@ -18,9 +18,9 @@ public class Solution {
                     count += 1;
                 }
             }
-            System.out.println(count);
-
+         
         }
+        System.out.println(count);
     }
             
 }
