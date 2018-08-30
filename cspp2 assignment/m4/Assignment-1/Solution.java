@@ -1,7 +1,11 @@
 /**
  * { item_description }
  */
-import java.util.*;
+import java.util.Scanner;
+/**
+ * { item_description }
+ */
+import java.util.Arrays;
 /**
  * Class for solution.
  */
@@ -25,7 +29,7 @@ public final class Solution {
 		Scanner sc = new Scanner(System.in);
 		int size = sc.nextInt();
 		int arr[] = new int[size];
-		for (int i = 0; i<arr.length; i++ ) {
+		for (int i = 0; i < arr.length; i++ ) {
 			arr[i] = sc.nextInt();
 		}
 		Arrays.sort(arr);
