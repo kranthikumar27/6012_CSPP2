@@ -4,7 +4,7 @@ import java.util.Scanner;
 /**
  * Class for solution.
  */
-public class Solution {
+public final class Solution {
     /**
      * Constructs the object.
      */
@@ -18,7 +18,7 @@ public class Solution {
      *
      * @return     { description_of_the_return_value }.
      */
-    public static String reverseString(String str) {
+    public static String reverseString(final String str) {
         String str1 = "";
         for (int i = str.length() - 1; i >= 0 ; i--) {
             char rev = str.charAt(i);
@@ -26,7 +26,7 @@ public class Solution {
         }
         return str1;
     }
-    /**
+    /**.
      * { function_description }
      *
      * @param      args  The arguments
@@ -36,6 +36,5 @@ public class Solution {
         String str = sc.nextLine();
         String reverse = reverseString(str);    
         System.out.println(reverse);
-        
     }
 }
