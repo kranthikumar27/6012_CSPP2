@@ -46,7 +46,6 @@ public final class Solution {
      * @param      args  The arguments.
      */
     public static void main(String[] args) {
-        
         int m1 = s.nextInt();
         int n1 = s.nextInt();
         int[][] matrix1 = readMatrix(m1, n1);
@@ -54,7 +53,7 @@ public final class Solution {
         int n2 = s.nextInt();
         int[][] matrix2 = readMatrix(m2, n2);
         int[][] res = new int[m1][n1];
-        if ( m1 == m2 && n1 == n2) {
+        if (m1 == m2 && n1 == n2) {
             for (int i = 0; i < m1; i++) {
                 for (int j = 0; j < n1; j++) {
                     res[i][j] = matrix1[i][j] + matrix2[i][j];
