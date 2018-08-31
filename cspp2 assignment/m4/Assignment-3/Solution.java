@@ -12,10 +12,13 @@ public final class Solution {
 
     }
     /**.
-     * { function_description }
+     * { function_description }.
      *
-     * @param      s  The arguments.
+     * @param      s     { parameter_description }.
+     *
+     * @return     { description_of_the_return_value }.
      */
+
     static String binaryToDecimal(final String s) {
         int binary = 1;
         int decimal = 0;
