@@ -26,7 +26,7 @@ public class Solution {
             binary = binary * 2;
         }
         String res = Integer.toString(decimal);
-        return res;
+    return res;
     }
 
     public static void main(String[] args)
