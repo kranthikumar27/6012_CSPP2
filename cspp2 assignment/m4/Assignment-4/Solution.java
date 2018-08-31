@@ -20,7 +20,7 @@ public final class Solution {
      */
     public static String reverseString(final String str) {
         String str1 = "";
-        for (int i = str.length() - 1; i >= 0 ; i--) {
+        for (int i = str.length() - 1; i >= 0; i--) {
             char rev = str.charAt(i);
             str1 += rev;
         }
@@ -34,7 +34,9 @@ public final class Solution {
     public static void main(final String[] args) {
         Scanner sc = new Scanner(System.in);
         String str = sc.nextLine();
-        String reverse = reverseString(str);    
+        String reverse = reverseString(str);
         System.out.println(reverse);
     }
 }
+
+
