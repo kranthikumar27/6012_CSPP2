@@ -1,5 +1,4 @@
 import java.util.Scanner;
-//import org.apache.commons.lang3.StringUtils;
 /**
  * Class for solution.
  */
@@ -23,7 +22,6 @@ public final class Solution {
      * @return     { description_of_the_return_value }.
      */
     public static int[][] readMatrix(final int m, final int n) {
-        // Scanner s = new Scanner(System.in);
         int[][] a = new int[m][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
@@ -73,5 +71,3 @@ public final class Solution {
         }
     }
 }
-
-
