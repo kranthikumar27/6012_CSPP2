@@ -13,7 +13,7 @@ public final class Solution {
     /**
      * { var_description }
      */
-    public static final Scanner s = new Scanner(System.in);
+    public static final Scanner sc = new Scanner(System.in);
     /**
      * Reads a matrix.
      *
@@ -25,12 +25,12 @@ public final class Solution {
     public static int[][] readMatrix(final int m, final int n) {
         // Scanner s = new Scanner(System.in);
         int a[][] = new int[m][n];
-        for(int i = 0; i < n; i++) {
-            for(int j = 0; j < n; j++) {
-                int val = s.nextInt();
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                int val = sc.nextInt();
                 a[i][j] = val;
             }
-            s.nextLine();
+            sc.nextLine();
         }
         return a;
     }
@@ -45,12 +45,12 @@ public final class Solution {
      *
      * @param      args  The arguments.
      */
-    public static void main(String[] args) {
-        int m1 = s.nextInt();
-        int n1 = s.nextInt();
+    public static void main(final String[] args) {
+        int m1 = sc.nextInt();
+        int n1 = sc.nextInt();
         int[][] matrix1 = readMatrix(m1, n1);
-        int m2 = s.nextInt();
-        int n2 = s.nextInt();
+        int m2 = sc.nextInt();
+        int n2 = sc.nextInt();
         int[][] matrix2 = readMatrix(m2, n2);
         int[][] res = new int[m1][n1];
         if (m1 == m2 && n1 == n2) {
