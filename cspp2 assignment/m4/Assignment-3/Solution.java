@@ -11,12 +11,12 @@ public final class Solution {
     private Solution() {
 
     }
-    /**
+    /**.
      * { function_description }
      *
-     * @param      args  The arguments.
+     * @param      s  The arguments.
      */
-    static String binaryToDecimal(String s) {
+    static String binaryToDecimal(final String s) {
         int binary = 1;
         int decimal = 0;
         for (int i = s.length() - 1; i >= 0; i--) {
