@@ -14,7 +14,7 @@ public final class Solution {
     /**
      * { function_description }
      *
-     * @param      args  The arguments
+     * @param      args  The arguments.
      */
     static String binaryToDecimal(String s) {
         int binary = 1;
@@ -33,14 +33,13 @@ public final class Solution {
      *
      * @param      args  The arguments
      */
-    public static void main(final String[] args)
-    {
+    public static void main(final String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         sc.nextLine();
-        for(int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             String s = sc.nextLine();
-            String res = binaryToDecimal(s);//Write binaryToDecimal function
+            String res = binaryToDecimal(s);
             System.out.println(res);
         }
     }
