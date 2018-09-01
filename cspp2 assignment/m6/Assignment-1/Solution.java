@@ -33,7 +33,7 @@ public final class Solution {
     				
     		}
     	}
-    	System.out.println(n);	
+    	System.out.println(i);	
     	}
 
     	
