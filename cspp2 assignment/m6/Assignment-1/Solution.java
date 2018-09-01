@@ -30,7 +30,7 @@ public final class Solution {
     				}
     				
     			}if (i%2!=0) {
-    				i=count+=2;
+    				i=count;
     				
     			}
 
