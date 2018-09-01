@@ -31,8 +31,7 @@ public final class Solution {
     				
     				
     				}else {
-    					System.out.println(i);
-
+    					
     				}
 
     			}
@@ -40,7 +39,8 @@ public final class Solution {
     		}
     	}
     		
-    	} 
+    	}System.out.println(i);
+
     	
     }
     /**
