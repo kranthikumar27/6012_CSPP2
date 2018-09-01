@@ -21,21 +21,24 @@ public final class Solution {
 	// write your code here
     	int num = n;
     	int i, j;
-    	for (i = 2;i <= n ;i++) {
+    	for (i = 3;i <= n ;i++) {
     		int count = 0;
     		if (n%2!=0) {
     			for (j = 1;j<=i;j++) {
     				if (i%j==0) {
     					count += 2;
     					if (i%2!=0) {
-    				i=count;
     				
+    				
+    				}else {
+    					System.out.println(i);
+
     				}
 
     			}
     				
     		}
-    	}System.out.println(i);
+    	}
     		
     	} 
     	
