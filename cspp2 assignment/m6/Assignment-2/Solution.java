@@ -29,8 +29,8 @@ final class Solution {
         int m, n;
         int multiple = 100;
         int min = 50;
-        for (int i = 0; i < multiple; i++) {
-            for (int j = 0; j < min; j++) {
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
                 if(a[i][j]  % multiple>= min) {
                     value = a[i][j]/multiple;
                     if(a[i][j] / multiple>=0) {
@@ -43,7 +43,7 @@ final class Solution {
                     
                 }
             }
-        } return a; 
+        } return a;
 	
     }
     /**
