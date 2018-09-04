@@ -94,7 +94,7 @@ public class List {
      * The method returns void (nothing)
      */
     /**.
-     * { function_description }
+     * { adds an element at the end of the list }
      *
      * @param      item  The item
      */
@@ -112,9 +112,9 @@ public class List {
      * The method returns an int. Empty list should return 0.
      */
     /**.
-     * { function_description }
+     * { size caluctates the size of the list }
      *
-     * @return     { description_of_the_return_value }
+     * @return     { returns_size }
      */
     public int size() {
         // replace the code below to implement the size method
@@ -142,7 +142,7 @@ public class List {
      * The method returns void (nothing)
      */
     /**.
-     * { function_description }
+     * { removes the element from the list }
      *
      * @param      index  The index
      */
@@ -176,7 +176,7 @@ public class List {
      *
      * @param      index  The index
      *
-     * @return     { description_of_the_return_value }
+     * @return     { returns interger type }
      */
     public int get(final int index) {
         // Replace the code below to write the code for get
@@ -231,11 +231,11 @@ public class List {
      * the item exists and otherwise false
      */
     /**.
-     * { function_description }
+     * { checks conditions }
      *
      * @param      item  The item
      *
-     * @return     { description_of_the_return_value }
+     * @return     { returns either true or false }
      */
     public boolean contains(final int item) {
         // Replace the code below
@@ -257,7 +257,7 @@ public class List {
      *
      * @param      item  The item
      *
-     * @return     { description_of_the_return_value }
+     * @return     { returns index value }
      */
     public int indexOf(final int item) {
         // Replace the code below
@@ -269,7 +269,7 @@ public class List {
         return -1;
     }
     /**.
-     * { function_description }
+     * { this is a main function }
      *
      * @param      args  The arguments
      */
