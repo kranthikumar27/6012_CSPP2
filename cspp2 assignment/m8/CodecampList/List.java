@@ -181,9 +181,9 @@ public class List {
         // Replace the code below
         String str = "[";
         String comma = ",";
-        for (int i=0;i<size;i++) {
+        for (int i = 0;i < size;i++) {
         	str += Integer.toString(arr[i]);
-        	if (i<size-1) {
+        	if (i < size-1) {
         		str += comma;
         	}
         }
@@ -199,7 +199,7 @@ public class List {
      */
     public boolean contains(int item) {
         // Replace the code below
-        for (int i=0;i<size;i++) {
+        for (int i = 0;i < size;i++) {
         	if (arr[i] == item) {
         		return true;      		
         	}
@@ -214,8 +214,8 @@ public class List {
      */
     public int indexOf(int item) {
         // Replace the code below
-        for (int i=0;i<size;i++) {
-        	if (arr[i]==item) {
+        for (int i = 0;i < size;i++) {
+        	if (arr[i] == item) {
         		return i;	
         	}
         }
@@ -263,6 +263,7 @@ public class List {
                 case "contains":
                 System.out.println(l.contains(Integer.parseInt(tokens[1])));
                 break;
+                default:
             }
         }
 	}
