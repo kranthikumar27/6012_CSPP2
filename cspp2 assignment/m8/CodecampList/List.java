@@ -27,7 +27,7 @@ public class List {
      * This is a hard concept to understand. Discuss with your mentor.
      *
     */
-    /**
+    /**.
      * { var_description }
      */
     private int[] arr;
@@ -57,12 +57,11 @@ public class List {
     // declare a private int size
     // again, don't initialize it here
     // variable initialization should be done in the constructor
-    
     /*
      * The purpose of the constructor is to initialize the
      * class variables with some default values.
      */
-    /**
+    /**.
      * { size }
      */
     private int size;
