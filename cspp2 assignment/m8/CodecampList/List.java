@@ -4,7 +4,7 @@ import java.util.Scanner;
  * List of .
  */
 public class List {
-	//Implement all the methods mentioned to build a ListADT
+    //Implement all the methods mentioned to build a ListADT
 
     /*
      * The goal for the list is to store items.
@@ -27,12 +27,10 @@ public class List {
      * This is a hard concept to understand. Discuss with your mentor.
      *
     */
-    
     // declare a private int[]
-    private int[] arr;
     // don't create the array yet using new
     // that's the job of the List constructor
-
+    private int[] arr;
     /*
      * What are the other class variables needed for creating a list?
      * How about keeping track of the size of the list?
@@ -50,14 +48,13 @@ public class List {
      * So, to keep track of the size we need a variable called size
      * Again, we use private as we don't want that size variable
      * to be accessed by the methods that are outside of the List class.
-     * 
+     *
      */
 
     // declare a private int size
-    private int size;
     // again, don't initialize it here
     // variable initialization should be done in the constructor
-
+    private int size;
     /*
      * The purpose of the constructor is to initialize the
      * class variables with some default values.
@@ -72,12 +69,12 @@ public class List {
         // What should be the default values?
         // In the case of the list, it should be empty but
         // it should be initialized with an array size like 10
-    	arr = new int[100];
+        arr = new int[100];
         // Think about the initial value for size.
         // How many items do we have in the list when you create it?
         // An empty list has how many items?
         // That is the initial value to use for size.
-    	size = 0;
+        size = 0;
     }
     /*
      * The add method does what the name suggests.
@@ -95,11 +92,11 @@ public class List {
      *
      * @param      item  The item
      */
-    public void add(int item) {
+    public void add(final int item) {
         //Inserts the specified element at the end of the list.
         arr[size] = item;
         size += 1;
-    	}
+        }
 
     /*
      * The size method returns the value of the size.
@@ -147,14 +144,14 @@ public class List {
         // write the logic for remove here.
         // Think about what to do to the size variable.
         if (index >= 0 && index < size) {
-        	for (int i = index; i < size - 1; i++) {
-        	arr[i] = arr[i + 1];
-        	}
-        	arr[size - 1] = 0;
+            for (int i = index; i < size - 1; i++) {
+            arr[i] = arr[i + 1];
+            }
+            arr[size - 1] = 0;
         size -= 1;
         } else {
-    		System.out.println("Invalid Position Exception");
-    	}
+            System.out.println("Invalid Position Exception");
+        }
     }
 
     /*
@@ -178,7 +175,7 @@ public class List {
     public int get(final int index) {
         // Replace the code below to write the code for get
         if (index > -1 && index < size) {
-        	return arr[index];
+            return arr[index];
         }
         return -1;
     }
@@ -213,10 +210,10 @@ public class List {
         String str = "[";
         String comma = ",";
         for (int i = 0; i < size; i++) {
-        	str += Integer.toString(arr[i]);
-        	if (i < size - 1) {
-        		str += comma;
-        	}
+            str += Integer.toString(arr[i]);
+            if (i < size - 1) {
+                str += comma;
+            }
         }
         str += "]";
         return str;
@@ -237,9 +234,9 @@ public class List {
     public boolean contains(final int item) {
         // Replace the code below
         for (int i = 0; i < size; i++) {
-        	if (arr[i] == item) {
-        		return true;
-        	}
+            if (arr[i] == item) {
+                return true;
+            }
         }
         return false;
     }
@@ -259,9 +256,9 @@ public class List {
     public int indexOf(final int item) {
         // Replace the code below
         for (int i = 0; i < size; i++) {
-        	if (arr[i] == item) {
-        		return i;
-        	}
+            if (arr[i] == item) {
+                return i;
+            }
         }
         return -1;
     }
@@ -270,7 +267,7 @@ public class List {
      *
      * @param      args  The arguments
      */
-	public static void main(final String[] args) {
+    public static void main(final String[] args) {
         // create an object of the list to invoke methods on it
         List l = new List();
 
@@ -315,5 +312,5 @@ public class List {
                 break;
             }
         }
-	}
+    }
 }
