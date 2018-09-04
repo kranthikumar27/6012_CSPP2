@@ -60,6 +60,9 @@ public class List {
      * The purpose of the constructor is to initialize the
      * class variables with some default values.
      */
+    /**
+     * Constructs the object.
+     */
     public List() {
 
         // what are the two variables to be initialized here?
@@ -99,6 +102,7 @@ public class List {
      * 
      * The method returns an int. Empty list should return 0.
      */
+
     public int size() {
         // replace the code below to implement the size method
         return size;
@@ -181,7 +185,7 @@ public class List {
         // Replace the code below
         String str = "[";
         String comma = ",";
-        for (int i = 0;i < size;i++) {
+        for (int i = 0; i < size; i++) {
         	str += Integer.toString(arr[i]);
         	if (i < size-1) {
         		str += comma;
@@ -199,7 +203,7 @@ public class List {
      */
     public boolean contains(int item) {
         // Replace the code below
-        for (int i = 0;i < size;i++) {
+        for (int i = 0; i < size; i++) {
         	if (arr[i] == item) {
         		return true;      		
         	}
@@ -214,7 +218,7 @@ public class List {
      */
     public int indexOf(int item) {
         // Replace the code below
-        for (int i = 0;i < size;i++) {
+        for (int i = 0; i < size; i++) {
         	if (arr[i] == item) {
         		return i;	
         	}
@@ -264,6 +268,7 @@ public class List {
                 System.out.println(l.contains(Integer.parseInt(tokens[1])));
                 break;
                 default:
+                break;
             }
         }
 	}
