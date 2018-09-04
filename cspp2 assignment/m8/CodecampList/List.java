@@ -79,7 +79,6 @@ public class List {
         // That is the initial value to use for size.
     	size = 0;
     }
-    
     /*
      * The add method does what the name suggests.
      * Add an int item to the list.
@@ -88,10 +87,10 @@ public class List {
      * Is it the same as the end of the array?
      * Think about how you can use the size variable to add item
      * to the list.
-     * 
+     *
      * The method returns void (nothing)
      */
-    /**
+    /**.
      * { function_description }
      *
      * @param      item  The item
@@ -106,10 +105,10 @@ public class List {
      * The size method returns the value of the size.
      * The purpose of the method is to announce the size of the list
      * to the objects outside the list
-     * 
+     *
      * The method returns an int. Empty list should return 0.
      */
-    /**
+    /**.
      * { function_description }
      *
      * @return     { description_of_the_return_value }
@@ -123,7 +122,7 @@ public class List {
      * The remove method does what the name suggests.
      * Removes an int item, specified by the index argument, from the list
      * It also does an additional step.
-     * Think about what happens when 
+     * Think about what happens when
      * an item is removed from the middle of the list
      * It creates a hole in the list, right?
      * This would mean, all the items that are
@@ -139,7 +138,7 @@ public class List {
      * array = [1,3,0,0,0,0,0,0,0,0]
      * The method returns void (nothing)
      */
-    /**
+    /**.
      * { function_description }
      *
      * @param      index  The index
@@ -148,10 +147,10 @@ public class List {
         // write the logic for remove here.
         // Think about what to do to the size variable.
         if (index >= 0 && index < size) {
-        	for (int i = index;i < size -1;i++) {
+        	for (int i = index; i < size - 1; i++) {
         	arr[i] = arr[i + 1];
         	}
-        	arr[size-1] = 0;
+        	arr[size - 1] = 0;
         size -= 1;
         } else {
     		System.out.println("Invalid Position Exception");
@@ -166,10 +165,10 @@ public class List {
      * How can an element not be there at a given position?
      * Well, if the position is greater than the number of items
      * in the list then that would mean the item doesn't exist.
-     * How do we check if the position is greater than the 
+     * How do we check if the position is greater than the
      * number of items in the list? Would size variable be useful?
      */
-    /**
+    /**.
      * { function_description }
      *
      * @param      index  The index
@@ -180,7 +179,7 @@ public class List {
         // Replace the code below to write the code for get
         if (index > -1 && index < size) {
         	return arr[index];
-        }        
+        }
         return -1;
     }
 
@@ -193,7 +192,7 @@ public class List {
      * System.out.println(l);
      * This statement is a shortcut for
      * System.out.println(l.toString());
-     * 
+     *
      * So, implement the toString method to display the items
      * in the list in the square brackets notation.
      * i.e., if the list has numbers 1, 2, 3
@@ -215,21 +214,20 @@ public class List {
         String comma = ",";
         for (int i = 0; i < size; i++) {
         	str += Integer.toString(arr[i]);
-        	if (i < size-1) {
+        	if (i < size - 1) {
         		str += comma;
         	}
         }
         str += "]";
         return str;
-    } 
-    
+    }
     /*
      * Contains return true if the list has
      * the item passed as an argument to the method
      * So, iterate through the list and return true if
      * the item exists and otherwise false
      */
-    /**
+    /**.
      * { function_description }
      *
      * @param      item  The item
@@ -240,14 +238,14 @@ public class List {
         // Replace the code below
         for (int i = 0; i < size; i++) {
         	if (arr[i] == item) {
-        		return true;      		
+        		return true;
         	}
         }
         return false;
     }
 
     /*
-     * Returns the index of the first occurrence 
+     * Returns the index of the first occurrence
      * of the specified element in this list,
      * or -1 if this list does not contain the element.
      */
@@ -262,17 +260,17 @@ public class List {
         // Replace the code below
         for (int i = 0; i < size; i++) {
         	if (arr[i] == item) {
-        		return i;	
+        		return i;
         	}
         }
         return -1;
     }
-    /**
+    /**.
      * { function_description }
      *
      * @param      args  The arguments
      */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
         // create an object of the list to invoke methods on it
         List l = new List();
 
