@@ -25,12 +25,16 @@ public class List {
      * This is a hard concept to understand. Discuss with your mentor.
      *
     */
-    
+    /**.
+     * { declaration of an list }
+     */
+    private int[] list;
+
     // declare a private int[]
     // don't create the array yet using new
     // that's the job of the List constructor
-    private int[] list;
-
+   
+    
     /*
      * What are the other class variables needed for creating a list?
      * How about keeping track of the size of the list?
@@ -54,13 +58,16 @@ public class List {
     // declare a private int size
     // again, don't initialize it here
     // variable initialization should be done in the constructor
-    private int size;
+    
 
     /*
      * The purpose of the constructor is to initialize the
      * class variables with some default values.
      */
-    
+    /**.
+     * { description of size}
+     */
+    private int size;
     
 
     public List() {
@@ -178,7 +185,11 @@ public class List {
      * array = [1,3,0,0,0,0,0,0,0,0]
      * The method returns void (nothing)
      */
-
+    /**
+     * { function_to _remove }
+     *
+     * @param      index  The index
+     */
     public void remove(int index) {
         // write the logic for remove here.
         // Think about what to do to the size variable.
@@ -202,6 +213,13 @@ public class List {
      * in the list then that would mean the item doesn't exist.
      * How do we check if the position is greater than the 
      * number of items in the list? Would size variable be useful?
+     */
+    /**
+     * { it is a function to get values }
+     *
+     * @param      index  The index
+     *
+     * @return     { returns_values }
      */
     public int get(int index) {
         if(index < 0 || index >= size) {
@@ -231,6 +249,11 @@ public class List {
      * not all the elements of the array.
      *
      */
+    /**
+     * Returns a string representation of the object.
+     *
+     * @return     String representation of the object.
+     */
     public String toString() {
         if(size == 0)
             return "[]";
@@ -249,6 +272,13 @@ public class List {
      * So, iterate through the list and return true if
      * the item exists and otherwise false
      */
+    /**
+     * { this is a boolean function }
+     *
+     * @param      item  The item
+     *
+     * @return     { returns either true or false value }
+     */
     public boolean contains(int item) {
         return indexOf(item) == -1;
     }
@@ -257,6 +287,13 @@ public class List {
      * Returns the index of the first occurrence 
      * of the specified element in this list,
      * or -1 if this list does not contain the element.
+     */
+    /**
+     * Searches for the first match.
+     *
+     * @param      item  The item
+     *
+     * @return     { returns_index_value }
      */
     public int indexOf(int item) {
         for(int i = 0; i < size; i++) {
@@ -267,6 +304,9 @@ public class List {
     }
    /*Inserts all the elements of specified int 
     array to the end of list*/
+    /**
+     * { this is the function for addAll }
+     */
     public void addAll(int items[])
     {
         // write the logic
@@ -280,6 +320,12 @@ public class List {
 	by moving all the elements to the right.
         The method returns void (nothing)
      */
+    /**
+     * { this is a add function_description }
+     *
+     * @param      index  The index
+     * @param      item   The item
+     */
     public void add(int index,int item) {
          // write the logic
     	for (int i = size; i >= index; i--) {
@@ -290,6 +336,13 @@ public class List {
     }
     
     /* Returns the count of occurances of a given item in the list*/
+    /**
+     * { this is a count function }
+     *
+     * @param      item  The item
+     *
+     * @return     { it_return_count_value }
+     */
     public int count(int item)
     {
          // write the logic
@@ -303,7 +356,11 @@ public class List {
         return count;
     }
 
-
+    /**
+     * { main function }
+     *
+     * @param      args  The arguments
+     */
 	public static void main(String[] args) {
         // create an object of the list to invoke methods on it
         List l = new List();
