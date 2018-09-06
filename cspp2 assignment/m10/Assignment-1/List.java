@@ -4,7 +4,7 @@ import java.util.Scanner;
  *class which contains listADT
  */
 public class List {
-    /**
+    /**.
      * { global variable }
      */
     public static final int TEN = 10;
@@ -450,3 +450,7 @@ public class List {
         }
     }
 }
+
+
+
+
