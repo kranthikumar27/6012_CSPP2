@@ -1,10 +1,11 @@
 import java.io.BufferedInputStream;
 import java.util.Scanner;
-/**
+/**.
  *class which contains listADT
  */
 public class List {
-	//Implement all the methods mentioned to build a ListADT
+    int TEN = 10;
+    //Implement all the methods mentioned to build a ListADT
 
     /*
      * The goal for the list is to store items.
@@ -75,7 +76,7 @@ public class List {
         // What should be the default values?
         // In the case of the list, it should be empty but
         // it should be initialized with an array size like 10
-        list = new int[10];
+        list = new int[TEN];
 
         // Think about the initial value for size.
         // How many items do we have in the list when you create it?
@@ -156,7 +157,7 @@ public class List {
      * Will the client invoke resize or is it internal to List class?
      * Should the resize be public method or private?
      * Should the resize method return any values?
-     * You know enough of Object Oriented Programming to 
+     * You know enough of Object Oriented Programming to
      * answer these questions :-)
      *
      */
@@ -322,19 +323,21 @@ public class List {
     /**.
      * { this is the function for addAll }
      */
-    /**.
-     * { function for addAll }
+    /**
+     * Adds all.
+     *
+     * @param      items  The items
      */
     public void addAll(final int[] items) {
         // write the logic
         for (int i = 0; i < items.length; i++) {
-         	add(items[i]);
+            add(items[i]);
         }
     }
 
      /*
         Inserts the specified element at the specified index
-	by moving all the elements to the right.
+    by moving all the elements to the right.
         The method returns void (nothing)
      */
     /**.
@@ -343,15 +346,14 @@ public class List {
      * @param      index  The index
      * @param      item   The item
      */
-    public void add(final int index, int item) {
+    public void add(final int index, final int item) {
          // write the logic
-    	for (int i = size; i >= index; i--) {
-    		list[i] = list[i - 1];
-       	}
-       	list[index] = item;
-       	size++;
+        for (int i = size; i >= index; i--) {
+            list[i] = list[i - 1];
+        }
+        list[index] = item;
+        size++;
     }
-    
     /* Returns the count of occurances of a given item in the list*/
     /**.
      * { this is a count function }
@@ -362,12 +364,12 @@ public class List {
      */
     public int count(final int item) {
          // write the logic
-    	int count = 0;
-    	for (int i = 0; i < size; i++) {
-    		if (list[i] == item) {
-    			count++;
-    		}	
-    	}
+        int count = 0;
+        for (int i = 0; i < size; i++) {
+            if (list[i] == item) {
+                count++;
+            }
+        }
         return count;
     }
 
@@ -376,7 +378,7 @@ public class List {
      *
      * @param      args  The arguments
      */
-	public static void main(final String[] args) {
+    public static void main(final String[] args) {
         // create an object of the list to invoke methods on it
         List l = new List();
 
@@ -443,5 +445,5 @@ public class List {
                 break;
             }
         }
-	}
+    }
 }
