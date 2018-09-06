@@ -111,13 +111,7 @@ public class List {
      */
     public void add(int item) {
         //Inserts the specified element at the end of the zelist.
-        if (size>list.length) {
-        	list[size++] = item;
-        } else{
-        	resize();
-        	list[size++] = item;
-        }
-           
+        list[size++] = item;   
     }
 
     /*
@@ -152,12 +146,6 @@ public class List {
      */
 
     // todo create resize method
-    private void resize() {
-    	int resize = 2 * size;
-    	int[] list1 = new int[resize];
-    	System.arraycopy(list, 0, list1, 0, list.length);
-    	list = list1;
-    }
 
     /*
      * The size method returns the value of the size.
@@ -282,10 +270,9 @@ public class List {
     public void addAll(int items[])
     {
         // write the logic
-        for (int i=0;i<list.length;i++) {
-        	add(list[i]);
-        }
-
+        for (int i = 0; i<=list.length; i++) {
+         	add(items[i]);
+         } 
     }
 
      /* 
@@ -295,11 +282,11 @@ public class List {
      */
     public void add(int index,int item) {
          // write the logic
-    	for (int i=size;i>=index;i--) {
-    		list[i] = list[i-1]; 
-    	}
-    	list[index] = item;
-    	size++;
+    	for (int i = size;i >= index; i--) {
+    		list[i] = list[i-1];
+       	}
+       	list[index] = item;
+       	size++;
     }
     
     /* Returns the count of occurances of a given item in the list*/
@@ -307,14 +294,16 @@ public class List {
     {
          // write the logic
     	int count = 0;
-    	for (int i=0;i<size;i++) {
+    	for (int i = 0;i<=list.length; i++) {
     		if (list[i] == item) {
     			count++;
     		}
+    		
     	}
         return count;
     }
-	
+
+
 	public static void main(String[] args) {
         // create an object of the list to invoke methods on it
         List l = new List();
