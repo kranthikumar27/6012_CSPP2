@@ -5,18 +5,18 @@ class Student {
 	private String name;
 
 	public Student(String name) {
-	//A constructor used to initialize the instance variables
+		//A constructor used to initialize the instance variables
 		this.name = name;
 	}
 
 	public String getName() {
-	//Getter method which returns the value of instance variable
+		//Getter method which returns the value of instance variable
 		return this.name;
 	}
 
 	@Override
 	public boolean equals(Object other) {
-	//This method is to check if two students names are equal or not
+		//This method is to check if two students names are equal or not
 		if (!(other instanceof Student)) {
 			return false;
 		}
@@ -102,7 +102,7 @@ public class Solution {
 					if (tokens.length == 2) {
 						String[] t1 = tokens[1].split(",");
 						Integer[] temp = new Integer[t1.length];
-						for (int i = 0; i < temp.length; i++ ) {
+						for (int i = 0; i < temp.length; i++) {
 							temp[i] = Integer.parseInt(t1[i]);
 						}
 						listInteger.addAll(temp);
@@ -204,7 +204,7 @@ public class Solution {
 					if (tokens.length == 2) {
 						String[] t1 = tokens[1].split(",");
 						Character[] temp = new Character[t1.length];
-						for (int i = 0; i < t1.length ; i++ ) {
+						for (int i = 0; i < t1.length; i++) {
 							temp[i] = t1[i].charAt(0);
 						}
 						listCharacter.addAll(temp);
@@ -306,7 +306,7 @@ public class Solution {
 					if (tokens.length == 2) {
 						String[] t1 = tokens[1].split(",");
 						Student[] temp = new Student[t1.length];
-						for (int i = 0; i < t1.length ; i++ ) {
+						for (int i = 0; i < t1.length; i++) {
 							temp[i] = new Student(t1[i]);
 						}
 						listStudent.addAll(temp);
