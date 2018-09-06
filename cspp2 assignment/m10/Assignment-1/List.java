@@ -4,7 +4,10 @@ import java.util.Scanner;
  *class which contains listADT
  */
 public class List {
-    int TEN = 10;
+    /**
+     * { global variable }
+     */
+    public static final int TEN = 10;
     //Implement all the methods mentioned to build a ListADT
 
     /*
