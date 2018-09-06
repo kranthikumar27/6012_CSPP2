@@ -1,9 +1,11 @@
 import java.io.BufferedInputStream;
 import java.util.Scanner;
-
+/**.
+ * Class for solution.
+ */
 public class Solution {
 
-    /**
+    /**.
      * { main function }
      *
      * @param      args  The arguments
@@ -11,7 +13,7 @@ public class Solution {
     public static void main(final String[] args) {
         // create an object of the list to invoke methods on it
         StringList sl = new StringList();
-        StringListInterface l = (StringListInterface)sl;
+        StringListInterface l = (StringListInterface) sl;
         //Typecasting is done for StringListInterface
         // code to read the test cases input file
         Scanner stdin = new Scanner(new BufferedInputStream(System.in));
