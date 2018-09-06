@@ -269,7 +269,11 @@ public class List {
     array to the end of list*/
     public void addAll(int items[])
     {
-        // write the logic 
+        // write the logic
+        for (int i=0;i<=list.length;i++) {
+        	add(list[i]);
+        }
+
     }
 
      /* 
@@ -278,14 +282,25 @@ public class List {
         The method returns void (nothing)
      */
     public void add(int index,int item) {
-         // write the logic 
+         // write the logic
+    	for (int i=size;i>=index;i--) {
+    		list[i] = list[i-1]; 
+    	}
+    	list[index] = item;
+    	size++;
     }
     
     /* Returns the count of occurances of a given item in the list*/
     public int count(int item)
     {
-         // write the logic 
-        return 0;
+         // write the logic
+    	int count = 0;
+    	for (int i=0;i<size;i++) {
+    		if (list[i] == item) {
+    			count++;
+    		}
+    	}
+        return count;
     }
 
 
