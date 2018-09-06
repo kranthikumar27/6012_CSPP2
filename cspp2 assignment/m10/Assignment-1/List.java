@@ -96,7 +96,7 @@ public class List {
      * constructor.
      * 
      */
-    /**
+    /**.
      * Constructs the object.
      *
      * @param      capacity  The capacity
@@ -117,7 +117,7 @@ public class List {
      * 
      * The method returns void (nothing)
      */
-    /**
+    /**.
      * { this function adds the values }
      *
      * @param      item  The item
@@ -167,7 +167,7 @@ public class List {
      * 
      * The method returns an int. Empty list should return 0.
      */
-    /**
+    /**.
      * { function for size }
      *
      * @return     { description_of_the_return_value }
@@ -196,7 +196,7 @@ public class List {
      * array = [1,3,0,0,0,0,0,0,0,0]
      * The method returns void (nothing)
      */
-    /**
+    /**.
      * { function_to _remove }
      *
      * @param      index  The index
@@ -260,7 +260,7 @@ public class List {
      * not all the elements of the array.
      *
      */
-    /**
+    /**.
      * Returns a string representation of the object.
      *
      * @return     String representation of the object.
@@ -299,7 +299,7 @@ public class List {
      * of the specified element in this list,
      * or -1 if this list does not contain the element.
      */
-    /**
+    /**.
      * Searches for the first match.
      *
      * @param      item  The item
@@ -316,10 +316,10 @@ public class List {
     }
    /*Inserts all the elements of specified int 
     array to the end of list*/
-    /**
+    /**.
      * { this is the function for addAll }
      */
-    /**
+    /**.
      * { function for addAll }
      */
     public void addAll(int items[]) {
@@ -334,7 +334,7 @@ public class List {
 	by moving all the elements to the right.
         The method returns void (nothing)
      */
-    /**
+    /**.
      * { this is a add function_description }
      *
      * @param      index  The index
@@ -350,7 +350,7 @@ public class List {
     }
     
     /* Returns the count of occurances of a given item in the list*/
-    /**
+    /**.
      * { this is a count function }
      *
      * @param      item  The item
@@ -370,7 +370,7 @@ public class List {
         return count;
     }
 
-    /**
+    /**.
      * { main function }
      *
      * @param      args  The arguments
@@ -437,6 +437,8 @@ public class List {
                 break;
                 case "contains":
                 System.out.println(l.contains(Integer.parseInt(tokens[1])));
+                break;
+                default:
                 break;
             }
         }
