@@ -35,12 +35,14 @@ public class StringList implements StringListInterface {
      * This is a hard concept to understand. Discuss with your mentor.
      *
     */
+    /**.
+     * { string list array }
+     */
+    private String[] list;
 
     // declare a private String[]
     // don't create the array yet using new
     // that's the job of the List constructor
-    private String[] list;
-
     /*
      * What are the other class variables needed for creating a list?
      * How about keeping track of the size of the list?
@@ -60,12 +62,14 @@ public class StringList implements StringListInterface {
      * to be accessed by the methods that are outside of the List class.
      *
      */
-
+    
+    /**
+     * { size }
+     */
+    private int size;
     // declare a private int size
     // again, don't initialize it here
     // variable initialization should be done in the constructor
-    private int size;
-
     /*
      * The purpose of the constructor is to initialize the
      * class variables with some default values.
@@ -73,6 +77,9 @@ public class StringList implements StringListInterface {
 
 
 
+    /**
+     * Constructs the object.
+     */
     public StringList() {
 
         // what are the two variables to be initialized here?
@@ -119,13 +126,20 @@ public class StringList implements StringListInterface {
      * The method returns void (nothing)
      */
 
+    /**
+     * { resize function }
+     */
     private void resize() {
         int resize = 2 * size;
         String[] list1 = new String[resize];
         System.arraycopy(list, 0, list1, 0, list.length);
         list = list1;
     }
-
+    /**
+     * { add_function_description }
+     *
+     * @param      item  The item
+     */
     public void add(String item) {
         //Inserts the specified element at the end of the list.
         if (size < list.length) {
@@ -138,7 +152,11 @@ public class StringList implements StringListInterface {
     }
     /*Inserts all the elements of specified int
     array to the end of list*/
-
+    /**
+     * Adds all.
+     *
+     * @param      items  The items
+     */
     public void addAll(String[] items) {
         for (int i = 0; i < items.length; i++) {
             add(items[i]);
@@ -150,6 +168,11 @@ public class StringList implements StringListInterface {
      * to the objects outside the list
      *
      * The method returns an int. Empty list should return 0.
+     */
+    /**
+     * { size_function_description }
+     *
+     * @return     { description_of_the_return_value }
      */
     public int size() {
         return size;
@@ -175,7 +198,11 @@ public class StringList implements StringListInterface {
      * array = [1,3,0,0,0,0,0,0,0,0]
      * The method returns void (nothing)
      */
-
+    /**
+     * { remove_function_description }
+     *
+     * @param      index  The index
+     */
     public void remove(int index) {
         // write the logic for remove here.
         // Think about what to do to the size variable.
@@ -199,6 +226,13 @@ public class StringList implements StringListInterface {
      * in the list then that would mean the item doesn't exist.
      * How do we check if the position is greater than the
      * number of items in the list? Would size variable be useful?
+     */
+    /**
+     * { get_function_description }
+     *
+     * @param      index  The index
+     *
+     * @return     { return_index_value }
      */
     public String get(int index) {
         if (index >= size || index < 0) {
@@ -228,6 +262,11 @@ public class StringList implements StringListInterface {
      * not all the elements of the array.
      *
      */
+    /**
+     * Returns a string representation of the object.
+     *
+     * @return     String representation of the object.
+     */
     public String toString() {
         if (size == 0) {
             return "[]";
@@ -247,6 +286,13 @@ public class StringList implements StringListInterface {
      * So, iterate through the list and return true if
      * the item exists and otherwise false
      */
+    /**
+     * { boolean_function_description }
+     *
+     * @param      item  The item
+     *
+     * @return     { return_boolean values }
+     */
     public boolean contains(String item) {
         for (int i = 0; i < size; i++) {
             if (item == list[i]) {
@@ -260,6 +306,13 @@ public class StringList implements StringListInterface {
      * Returns the index of the first occurrence
      * of the specified element in this list,
      * or -1 if this list does not contain the element.
+     */
+    /**
+     * Searches for the first match.
+     *
+     * @param      item  The item
+     *
+     * @return     { retuns index value }
      */
     public int indexOf(String item) {
         for (int i = 0; i < size; i++) {
