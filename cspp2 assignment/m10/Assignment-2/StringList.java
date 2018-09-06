@@ -118,6 +118,7 @@ public class StringList implements StringListInterface {
      *
      * The method returns void (nothing)
      */
+
     public void add(String item) {
         //Inserts the specified element at the end of the list.
         list[size++] = item;
