@@ -119,9 +119,22 @@ public class StringList implements StringListInterface {
      * The method returns void (nothing)
      */
 
+    private void resize() {
+        int resize = 2 * size;
+        String[] list1 = new String[resize];
+        System.arraycopy(list, 0, list1, 0, list.length);
+        list = list1;
+    }
+
     public void add(String item) {
         //Inserts the specified element at the end of the list.
-        list[size++] = item;
+        if (size < list.length) {
+            list[size++] = item;   
+           } else {
+            resize();
+            list[size++] = item;   
+
+           }
     }
     /*Inserts all the elements of specified int
     array to the end of list*/
