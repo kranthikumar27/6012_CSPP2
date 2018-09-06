@@ -126,7 +126,7 @@ public class StringList implements StringListInterface {
     array to the end of list*/
 
     public void addAll(String[] items) {
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < items.length; i++) {
             add(items[i]);
         }
     }
