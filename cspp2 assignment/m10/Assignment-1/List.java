@@ -29,12 +29,9 @@ public class List {
      * { declaration of an list }
      */
     private int[] list;
-
     // declare a private int[]
     // don't create the array yet using new
     // that's the job of the List constructor
-   
-    
     /*
      * What are the other class variables needed for creating a list?
      * How about keeping track of the size of the list?
@@ -54,7 +51,6 @@ public class List {
      * to be accessed by the methods that are outside of the List class.
      * 
      */
-
     // declare a private int size
     // again, don't initialize it here
     // variable initialization should be done in the constructor
@@ -100,6 +96,11 @@ public class List {
      * constructor.
      * 
      */
+    /**
+     * Constructs the object.
+     *
+     * @param      capacity  The capacity
+     */
     public List(int capacity) {
         size = 0;
         list = new int[capacity];
@@ -115,6 +116,11 @@ public class List {
      * to the list.
      * 
      * The method returns void (nothing)
+     */
+    /**
+     * { this function adds the values }
+     *
+     * @param      item  The item
      */
     public void add(int item) {
         //Inserts the specified element at the end of the zelist.
@@ -160,6 +166,11 @@ public class List {
      * to the objects outside the list
      * 
      * The method returns an int. Empty list should return 0.
+     */
+    /**
+     * { function for size }
+     *
+     * @return     { description_of_the_return_value }
      */
     public int size() {
         return size;
