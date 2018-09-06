@@ -282,7 +282,7 @@ public class List {
     public void addAll(int items[])
     {
         // write the logic
-        for (int i=0;i<=list.length;i++) {
+        for (int i=0;i<list.length;i++) {
         	add(list[i]);
         }
 
