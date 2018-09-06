@@ -111,7 +111,13 @@ public class List {
      */
     public void add(int item) {
         //Inserts the specified element at the end of the zelist.
-        list[size++] = item;   
+        if (size>list.length) {
+        	list[size++] = item;
+        } else{
+        	resize();
+        	list[size++] = item;
+        }
+           
     }
 
     /*
@@ -146,6 +152,12 @@ public class List {
      */
 
     // todo create resize method
+    private void resize() {
+    	int resize = 2 * size;
+    	int[] list1 = new int[resize];
+    	System.arraycopy(list, 0, list1, 0, list.length);
+    	list = list1;
+    }
 
     /*
      * The size method returns the value of the size.
@@ -302,8 +314,7 @@ public class List {
     	}
         return count;
     }
-
-
+	
 	public static void main(String[] args) {
         // create an object of the list to invoke methods on it
         List l = new List();
