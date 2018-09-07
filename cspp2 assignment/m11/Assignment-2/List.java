@@ -204,6 +204,7 @@ public class List<E> {
     public List subList(int start, int end) {
         if (start < 0 || end > size) {
             System.out.println("Index Out of Bounds Exception");
+            return null;
         }
         List<E> templist = new List();
         for (int i = start; i < end; i++) {
