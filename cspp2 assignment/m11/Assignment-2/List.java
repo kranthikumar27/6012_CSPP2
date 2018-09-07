@@ -49,9 +49,9 @@ public class List<E> {
      */
     private void resize() {
         list = Arrays.copyOf(list, 2 * size);
-               //int resize = 2 * size;
-               //System.arraycopy(list, 0, list1, 0, list.lenght)
-               //list = list1
+        //int resize = 2 * size;
+        //System.arraycopy(list, 0, list1, 0, list.lenght)
+        //list = list1
     }
 
     /*
@@ -87,11 +87,10 @@ public class List<E> {
     public void remove(int index) {
         //Write logic for remove method
         if (index >= 0 && index < size) {
-            for (int i = index; i < size; i++) {
-                list[i] = list[i - 1];
+            for (int i = index; i < size - 1; i++) {
+                list[i] = list[i + 1];
             }
-            list[size - 1] = null;
-        size--;
+            size--;
         } else {
             System.out.println("Array Index Out Of Bounds Exception");
         }
@@ -158,7 +157,7 @@ public class List<E> {
         for (int i = 0; i < list.length; i++) {
             if (list[i] == item) {
                 return true;
-            } 
+            }
         }
         return false;
     }
@@ -199,7 +198,7 @@ public class List<E> {
      indicates the endIndex.
      */
     public List subList(int start, int end) {
-        if(start<0||end>size){
+        if (start < 0 || end > size) {
             System.out.println("Index Out of Bounds Exception");
         }
         List<E> templist = new List();
