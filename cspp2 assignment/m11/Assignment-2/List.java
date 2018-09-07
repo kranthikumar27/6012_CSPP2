@@ -43,7 +43,7 @@ public class List<E> {
     array to the end of list*/
     public void addAll(E[] items) {
         //Write logic for addAll method
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < items.length; i++) {
             add(items[i]);
         }
     }
@@ -159,7 +159,7 @@ public class List<E> {
     public boolean contains(E item) {
         //Write logic for contains method
         for (int i = 0; i < list.length; i++) {
-            if (list[i] == item) {
+            if (list[i].equals(item)) {
                 return true;
             }
         }
