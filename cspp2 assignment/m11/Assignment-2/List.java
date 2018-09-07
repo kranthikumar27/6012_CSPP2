@@ -199,6 +199,9 @@ public class List<E> {
      indicates the endIndex.
      */
     public List subList(int start, int end) {
+        if(start<0||end>size){
+            System.out.println("Index Out of Bounds Exception");
+        }
         List<E> templist = new List();
         for (int i = start; i < end; i++) {
             templist.add(this.get(i));
