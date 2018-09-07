@@ -34,17 +34,24 @@ public class List<E> {
     public void add(E item) {
         //Inserts the specified element at the end of the list.
         //You can modify the code in this method.
-        // list[(size++)] = item;
+        list[(size++)] = item;
     }
     /*Inserts all the elements of specified int
     array to the end of list*/
     public void addAll(E[] items) {
         //Write logic for addAll method
+        for (int i = 0; i < size; i++) {
+            add(list[i]);
+        }
     }
-    /**
+    /**.
      * { function_description }
      */
-    private void resize(){
+    private void resize() {
+        list = Arrays.copyOf(list, 2 * size);
+               //int resize = 2 * size;
+               //System.arraycopy(list, 0, list1, 0, list.lenght)
+               //list = list1
     }
 
     /*
@@ -55,7 +62,7 @@ public class List<E> {
      * The method returns an int. Empty list should return 0.
      */
     public int size() {
-    	return 0;
+        return 0;
     }
     /*
      * The remove method does what the name suggests.
@@ -79,6 +86,15 @@ public class List<E> {
      */
     public void remove(int index) {
         //Write logic for remove method
+        if (index >= 0 && index < size) {
+            for (int i = index; i < size; i++) {
+                list[i] = list[i - 1];
+            }
+            list[size - 1] = null;
+        size--;
+        } else {
+            System.out.println("Array Index Out Of Bounds Exception");
+        }
     }
     /*
      * Get method has to return the items that is
@@ -92,10 +108,14 @@ public class List<E> {
      * number of items in the list? Would size variable be useful?
      */
     public E get(int index) {
-         //Write logic for get method
-        // return list[index];
+        //Write logic for get method
+        if (index >= 0 && index < size) {
+            return list[index];
+        }
         return null;
     }
+    // return ;
+
     /*
      * What happens when you print an object using println?
      * Java provides a method named toString that is internally
@@ -117,8 +137,15 @@ public class List<E> {
      *
      */
     public String toString() {
-
-       return "print the list";
+        if (size == 0) {
+            return "[]";
+        }
+        String str = "[";
+        for (int i = 0; i < size - 1; i++) {
+            str +=  list[i] + ",";
+        }
+        str +=  list[size - 1] + "]";
+        return str;
     }
     /*
      * Contains return true if the list has
@@ -127,9 +154,13 @@ public class List<E> {
      * the item exists and otherwise false
      */
     public boolean contains(E item) {
-		//Write logic for contains method
-        return true;
-
+        //Write logic for contains method
+        for (int i = 0; i < list.length; i++) {
+            if (list[i] == item) {
+                return true;
+            } 
+        }
+        return false;
     }
     /*
      * Returns the index of the first occurrence
@@ -138,16 +169,28 @@ public class List<E> {
      */
 
     public int indexOf(E item) {
-       //Write logic for indexOf method
+        //Write logic for indexOf method
+        for (int i = 0; i < size; i++) {
+            if (list[i] == item) {
+                return i;
+            }
+        }
         return -1;
     }
 
     /* Removes all of its elements that
      * are contained in the specified int array.
      */
-    public void removeAll(E[] items)
-    {
+    public void removeAll(E[] items) {
         // write the logic
+        for (int i = 0; i < items.length; i++) {
+            for (int j = 0; j < list.length; j++) {
+                if (items[i].equals(get(j))) {
+                    remove(j);
+                    j--;
+                }
+            }
+        }
     }
 
     /*Returns a list containing elements, including
@@ -155,20 +198,23 @@ public class List<E> {
      indicates the startIndex and the second parameter
      indicates the endIndex.
      */
-    public List subList(int n, int n2) {
-
-        return null;
+    public List subList(int start, int end) {
+        List<E> templist = new List();
+        for (int i = start; i < end; i++) {
+            templist.add(this.get(i));
+        }
+        return templist;
     }
     /*Returns a boolean indicating whether the parameter
       i.e a List object is exactly matching with the given list or not.
      */
-    public boolean equals(List<E> listdata)
-    {
-        return true;
+    public boolean equals(List<E> listdata) {
+        return this.toString().equals(listdata.toString());
     }
     /*Removes all the elements from list*/
-    public void clear()
-    {
+    public void clear() {
         // write the logic for clear.
+        size = 0;
+        list = ((E[]) new Object[10]);
     }
 }
