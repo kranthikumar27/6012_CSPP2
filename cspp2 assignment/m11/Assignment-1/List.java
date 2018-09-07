@@ -156,6 +156,9 @@ public class List {
 	 */
 	public String toString() {
 		// Replace the code below
+		if (size == 0) {
+            return "[]";
+        }
 		String str = "[";
 		for (int i = 0; i < size; i++) {
 			str += list[i];
@@ -257,7 +260,7 @@ public class List {
 	*/
 	public void clear() {
 		// write the logic for clear.
-		for (int i=0;i<size;i++) {
+		for (int i = 0; i < size; i++) {
 			list[i] = 0;
 		}
 		size = 0;
