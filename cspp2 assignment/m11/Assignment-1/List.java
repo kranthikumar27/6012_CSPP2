@@ -136,7 +136,6 @@ public class List {
 		if (index >= 0 || index < size) {
 			return list[index];
 		} else {
-			System.out.println("Invalid Position Exception");
 			return 0;
 		}
 	}
