@@ -107,7 +107,8 @@ public class List {
         //Inserts the specified element at the end of the list.
         if (size == list.length) {
             resize();
-      } else {
+            list[size++] = item;
+        } else {
         list[(size++)] = item;
         }
     }
@@ -315,7 +316,7 @@ public class List {
             System.out.println("Index Out of Bounds Exception");
             return null;
         }
-        if (start > size || end > size) {
+        if (start > size || start > end || end > size) {
             System.out.println("Index Out of Bounds Exception");
             return null;
         }
