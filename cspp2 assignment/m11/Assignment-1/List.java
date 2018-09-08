@@ -107,8 +107,7 @@ public class List {
         //Inserts the specified element at the end of the list.
         if (size == list.length) {
             resize();
-            list[size++] = item;
-        } else {
+      } else {
         list[(size++)] = item;
         }
     }
