@@ -96,7 +96,7 @@ public class List<E> {
             }
             size--;
         } else {
-            System.out.println("Array Index Out Of Bounds Exception");
+            System.out.println("Invalid Position Exception");
         }
     }
     /*
