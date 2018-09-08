@@ -210,15 +210,15 @@ public class List {
      * @return     String representation of the object.
      */
     public String toString() {
-        // Replace the code below
-        String s1 = "[";
         if (size == 0) {
             return "[]";
         }
+        String str = "[";
         for (int i = 0; i < size - 1; i++) {
-            s1 += list[i] + ",";
+            str +=  list[i] + ",";
         }
-        return s1 + list[size - 1] + "]";
+        str +=  list[size - 1] + "]";
+        return str;
     }
     /*
      * Contains return true if the list has the item passed as an argument to
