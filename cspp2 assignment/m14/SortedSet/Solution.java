@@ -1,240 +1,327 @@
-import java.io.BufferedInputStream;
 import java.util.Scanner;
 import java.util.Arrays;
-/**
- * Class for sorted set.
+/**.
+ * List of .
  */
-class SortedSet extends Set {
-    /**
-     * sort function.
-     *
-     * @param      array  The array
+class List {
+    /**.
+     * { var_description }
      */
-    public void sort(final int[] array) {
-        int temp;
-        for (int i = 0; i < size; i++) {
-            for (int j = i + 1; j < size; j++) {
-                if (array[i] > array[j]) {
-                    temp = array[i];
-                    array[i] = array[j];
-                    array[j] = temp;
-                }
-            }
-        }
+    private int[] list;
+    /**.
+     * { var_description }
+     */
+    private int size;
+    /**.
+     * Constructs the object.
+     */
+    List() {
+        final int ten = 10;
+        list = new int[ten];
+        size = 0;
     }
-    /**
-     * add function.
+    /**.
+     * { function_description }
+     */
+    private void resize() {
+        list = Arrays.copyOf(list, 2 * size);
+    }
+    /**.
+     * { function_description }
      *
      * @param      item  The item
      */
     public void add(final int item) {
-        if (!contains(item)) {
-            set[size++] = item;
+        if (size == list.length) {
+            resize();
         }
-        sort(set);
+        list[size++] = item;
     }
-    /**
-     * subset.
+    /**.
+     * { function_description }
      *
-     * @param      start  The start
-     * @param      end    The end
-     *
-     * @return     from start to end returns elements.
+     * @return     { description_of_the_return_value }
      */
-    public int[] subSet(final int start, final int end) {
-        if (start > end) {
-            System.out.println("Invalid Arguments to Subset Exception");
-            return null;
+    public int size() {
+        return size;
+    }
+    /**.
+     * { function_description }
+     *
+     * @param      index      The index
+     *
+     * @throws     Exception  { exception_description }
+     */
+    public void remove(final int index) throws Exception {
+        if (index >= size || index < 0) {
+            throw new Exception("Invalid Position Exception");
+        } else {
+            int i;
+            for (i = index; i < size - 1; i++) {
+                list[i] = list[i + 1];
+            } list[i] = list[size - 1];
+            size--;
         }
-        int[] result = new int[size];
-        int k = 0;
-        for (int i = 0; i < size; i++) {
-            if (set[i] >= start) {
-                for (int j = i; j < size; j++) {
-                    if (set[j] < end) {
-                        result[k++] = set[i];
-                    }
-                    break;
-                }
+    }
+    /**.
+     * { function_description }
+     *
+     * @param      item  The item
+     *
+     * @return     { description_of_the_return_value }
+     */
+    public int get(final int item) {
+        for (int index = 0; index < size; index++) {
+            if (item == list[index]) {
+                return index;
             }
         }
-        return Arrays.copyOf(result, k);
+        return -1;
     }
-    /**
-     * headset function.
+    /**.
+     * Returns a string representation of the object.
      *
-     * @param      end   The end
-     *
-     * @return     returms elements.
+     * @return     String representation of the object.
      */
-    public int[] headSet(final int end) {
-        int[] result = new int[size];
-        int temp = 0;
-        for (int i = 0; i < size; i++) {
-            if (set[i] < end) {
-                result[i] = set[i];
-                temp++;
-            }
-        }
-        return Arrays.copyOf(result, temp);
-    }
-    /**
-     * last function.
-     *
-     * @return     returns list of elements.
-     */
-    public int last() {
+    public String toString() {
         if (size == 0) {
-            System.out.println("Set Empty Exception");
-            return -1;
+            return "[]";
         }
-        return set[size - 1];
+        String str = "[";
+        for (int index = 0; index < size - 1; index++) {
+            str += list[index] + ",";
+        }
+        return str + list[size - 1] + "]";
     }
-    /**
+    /**.
+     * { function_description }
+     *
+     * @param      item  The item
+     *
+     * @return     { description_of_the_return_value }
+     */
+    public boolean contains(final int item) {
+        return indexOf(item) != -1;
+    }
+    /**.
+     * Searches for the first match.
+     *
+     * @param      item  The item
+     *
+     * @return     { description_of_the_return_value }
+     */
+    public int indexOf(final int item) {
+        for (int index = 0; index < size; index++) {
+            if (list[index] == item) {
+                return index;
+            }
+        }
+        return -1;
+    }
+    /**.
      * Adds all.
      *
-     * @param      element  The element
+     * @param      items  The items
      */
-    public void addAll(final int[] element) {
-        for (int i : element) {
-            this.add(i);
+    public void addAll(final int[] items) {
+        for (int index = 0; index < items.length; index++) {
+            add(items[index]);
         }
     }
+    /**.
+     * { function_description }
+     *
+     * @param      index  The index
+     * @param      item   The item
+     */
+    public void add(final int index, final int item) {
+        if (size == list.length) {
+            resize();
+        }
+        for (int i = size; i >= index; i--) {
+            list[i] = list[i - 1];
+        }
+        list[index] = item;
+        size++;
+    }
+    /**.
+     * { function_description }
+     *
+     * @param      item  The item
+     *
+     * @return     { description_of_the_return_value }
+     */
+    public int count(final int item) {
+        int count = 0;
+        for (int index = 0; index < size; index++) {
+            if (item == list[index]) {
+                count += 1;
+            }
+        }
+        return count;
+    }
+    /**.
+     * Removes all.
+     *
+     * @param      items      The items
+     *
+     * @throws     Exception  { exception_description }
+     */
+    public void removeAll(final int[] items) throws Exception {
+        for (int index = 0; index < items.length; index++) {
+            while (indexOf(items[index]) != -1) {
+                remove(indexOf(items[index]));
+            }
+        }
+    }
+    /**.
+     * { function_description }
+     *
+     * @param      start      The start
+     * @param      end        The end
+     *
+     * @return     { description_of_the_return_value }
+     *
+     * @throws     Exception  { exception_description }
+     */
+    public List subList(final int start, final int end) throws Exception {
+        if (start < 0 || end > size || start == end) {
+            throw new Exception("Index Out of Bounds Exception");
+        }
+        List l = new List();
+        for (int index = start; index < end; index++) {
+            l.add(list[index]);
+        }
+        return l;
+    }
+    /**.
+     * { function_description }
+     *
+     * @param      listObject    The l 1
+     *
+     * @return     { description_of_the_return_value }
+     */
+    public boolean equals(final List listObject) {
+        return listObject.toString().equals(toString());
+    }
+    /**.
+     * { function_description }
+     */
+    public void clear() {
+        size = 0;
+    }
 }
-/**
- * Solution class.
+/**.
+ * { item_description }
  */
-public final class Solution {
-    /**
+final class Solution {
+    /**.
      * Constructs the object.
      */
     private Solution() {
 
     }
-    /**
-     * helper function to convert string input to int array.
-     *
-     * @param      s     { string input from test case file }
-     *
-     * @return     { int array from the given string }
-     */
-    public static int[] intArray(final String s) {
-        String input = s;
-        if (input.equals("[]")) {
-            return new int[0];
-        }
-        if (s.contains("[")) {
-            input = s.substring(1, s.length() - 1);
-        }
-        return Arrays.stream(input.split(","))
-               .mapToInt(Integer::parseInt)
-               .toArray();
-    }
-    /**
-     * main function to execute test cases.
+    /**.
+     * { function_description }
      *
      * @param      args  The arguments
      */
     public static void main(final String[] args) {
-        // instantiate this set
-        SortedSet s = new SortedSet();
-        // code to read the test cases input file
-        Scanner stdin = new Scanner(new BufferedInputStream(System.in));
-        // check if there is one more line to process
-        while (stdin.hasNext()) {
-            // read the line
-            String line = stdin.nextLine();
-            // split the line using space
-            String[] tokens = line.split(" ");
-            // based on the list operation invoke the corresponding method
+        List obj = new List();
+        Scanner scan = new Scanner(System.in);
+        while (scan.hasNext()) {
+            String[] tokens = scan.nextLine().split(" ");
             switch (tokens[0]) {
+            case "add":
+                if ((tokens.length) == 2) {
+                    String[] tempArray = tokens[1].split(",");
+                    if (tempArray.length == 1) {
+                        obj.add(Integer.parseInt(tokens[1]));
+                    } else {
+                        if (tempArray.length > 1) {
+                            obj.add(Integer.parseInt(tempArray[0]),
+                                    Integer.parseInt(tempArray[1]));
+                        }
+                    }
+                }
+                break;
             case "size":
-                System.out.println(s.size());
+                System.out.println(obj.size());
+                break;
+            case "remove":
+                try {
+                    obj.remove(Integer.parseInt(tokens[1]));
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+                break;
+            case "get":
+                System.out.println(obj.get(Integer.parseInt(tokens[1])));
                 break;
             case "contains":
-                System.out.println(s.contains(Integer.parseInt(tokens[1])));
+                System.out.println(obj.contains(Integer.parseInt(tokens[1])));
                 break;
             case "print":
-                System.out.println(s);
+                System.out.println(obj.toString());
                 break;
-            case "add":
-                int[] intArray = intArray(tokens[1]);
-                if (intArray.length == 1) {
-                    s.add(intArray[0]);
-                } else {
-                    s.add(intArray);
-                }
-                break;
-            case "intersection":
-                s = new SortedSet();
-                Set t = new Set();
-                intArray = intArray(tokens[1]);
-                s.add(intArray);
-                intArray = intArray(tokens[2]);
-                t.add(intArray);
-                System.out.println(s.intersection(t));
-                break;
-            case "retainAll":
-                s = new SortedSet();
-                intArray = intArray(tokens[1]);
-                s.add(intArray);
-                intArray = intArray(tokens[2]);
-                System.out.println(s.retainAll(intArray));
-                break;
-            case "cartesianProduct":
-                s = new SortedSet();
-                t = new Set();
-                intArray = intArray(tokens[1]);
-                s.add(intArray);
-                intArray = intArray(tokens[2]);
-                t.add(intArray);
-                System.out.println(Arrays.deepToString(s.cartesianProduct(t)));
-                break;
-            case "subSet":
-                if (tokens.length != 2) {
-                    break;
-                }
-                String[] arrstring3 = tokens[1].split(",");
-                int[] object = s.subSet(Integer.parseInt(arrstring3[0]),
-                                        Integer.parseInt(arrstring3[1]));
-                if (object != null) {
-                    System.out.println(Arrays.toString(object).replace("[",
-                        "{").replace("]", "}"));
-                }
-                break;
-            case "headSet":
-                if (tokens.length != 2) {
-                    break;
-                }
-                int[] obj = s.headSet(Integer.parseInt(tokens[1]));
-                if (obj != null) {
-                    System.out.println(Arrays.toString(obj).replace("[",
-                        "{").replace("]", "}"));
-                }
-                break;
-            case "last":
-                if (tokens.length != 1) {
-                    break;
-                }
-                int temp = s.last();
-                System.out.println(temp);
+            case "indexOf":
+                System.out.println(obj.indexOf(Integer.parseInt(tokens[1])));
                 break;
             case "addAll":
-                int[] intArr = intArray(tokens[1]);
-                if (intArr.length == 1) {
-                    s.add(intArr[0]);
-                } else {
-                    s.add(intArr);
+                String[] tempArray0 = tokens[1].split(",");
+                int[] temp = new int[tempArray0.length];
+                for (int i = 0; i < tempArray0.length; i++) {
+                    temp[i] = Integer.parseInt(tempArray0[i]);
                 }
+                obj.addAll(temp);
+                break;
+            case "count":
+                System.out.println(obj.count(Integer.parseInt(tokens[1])));
+                break;
+            case "removeAll":
+                if (tokens.length == 1) {
+                    break;
+                }
+                try {
+                    String[] tempArray1 = tokens[1].split(",");
+                    int[] temp2 = new int[tempArray1.length];
+                    for (int i = 0; i < tempArray1.length; i++) {
+                        temp2[i] = Integer.parseInt(tempArray1[i]);
+                    }
+                    obj.removeAll(temp2);
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+                break;
+            case "subList":
+                try {
+                    String[] tempArray2 = tokens[1].split(",");
+                    List obj1 = obj.subList(Integer.parseInt(tempArray2[0]),
+                                            Integer.parseInt(tempArray2[1]));
+                    System.out.println(obj1.toString());
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+                break;
+            case "equals":
+                if (tokens.length == 1) {
+                    break;
+                }
+                String[] tempArray3 = tokens[1].split(",");
+                List obj2 = new List();
+                for (int i = 0; i < tempArray3.length; i++) {
+                    obj2.add(Integer.parseInt(tempArray3[i]));
+                }
+                System.out.println(obj.equals(obj2));
+                break;
+            case "clear":
+                obj.clear();
                 break;
             default:
                 break;
             }
         }
+
     }
+
 }
-
-
-
-
-

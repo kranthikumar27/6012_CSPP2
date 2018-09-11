@@ -1,19 +1,19 @@
-18
-subSet -2,6
-subSet 10,4
-subSet -1,-1
-last
+14
+add 1
+add -1
+size
 print
-addAll 1,5,16,3,19,25
+add 0
+add 0
+add 0
+add -1
+subList -1,-1
+equals 1,-1,0,0,0,-1
+size
 print
-last
-subSet 1,25
-subSet 1,26
-subSet 0,25
-subSet 0,26
+clear
+size
+equals 
+addAll 1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,7,8,9
+removeAll 9,1,2,3,4,5,6,7,8,9
 print
-headSet 6
-headSet 1
-headSet 2
-headSet 25
-headSet 26
