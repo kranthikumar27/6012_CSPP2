@@ -256,7 +256,7 @@ public class List {
         return -1;
     }
 
-    /**
+    /**.
      * { function_description }
      *
      * @param      item  The item
