@@ -157,19 +157,16 @@ public class List {
      * @param      index  The index
      */
     public void remove(final int index) {
-        // write the logic for remove here. Think about what to do to the size
-        // variable.
-        try {
-            if (index >= 0 && index < size) {
-                for (int i = index; i < size - 1; i++) {
-                    list[i] = list[i + 1];
-                }
-            }
-            size--;
-        } catch (Exception e) {
-            System.out.println("Invalid Position Exception");
-        }
-    }
+		try {
+			for (int i = index; i < size; i++) {
+				list[i] = list[i + 1];
+			}
+			list[size - 1] = 0;
+			size--;
+		} catch (Exception e) {
+			System.out.println("Invalid Position Exception");
+		}
+	}
     /*
      * Get method has to return the items that is at the index position passed
      * as an argument to the method. If the item doesn't exist then return a -1
