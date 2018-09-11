@@ -157,16 +157,16 @@ public class List {
      * @param      index  The index
      */
     public void remove(final int index) {
-		try {
-			for (int i = index; i < size; i++) {
-				list[i] = list[i + 1];
-			}
-			list[size - 1] = 0;
-			size--;
-		} catch (Exception e) {
-			System.out.println("Invalid Position Exception");
-		}
-	}
+        try {
+            for (int i = index; i < size; i++) {
+                list[i] = list[i + 1];
+            }
+            list[size - 1] = 0;
+            size--;
+        } catch (Exception e) {
+            System.out.println("Invalid Position Exception");
+        }
+    }
     /*
      * Get method has to return the items that is at the index position passed
      * as an argument to the method. If the item doesn't exist then return a -1
@@ -264,14 +264,14 @@ public class List {
      * @return     { description_of_the_return_value }
      */
     public int count(final int item) {
-		int count = 0;
-		for (int i = 0; i < size; i++) {
-			if (list[i] == item) {
-				count++;
-			}
-		}
-		return count;
-	}
+        int count = 0;
+        for (int i = 0; i < size; i++) {
+            if (list[i] == item) {
+                count++;
+            }
+        }
+        return count;
+    }
     /*
     Inserts all the elements of specified int array to the end of list
     */
@@ -326,26 +326,26 @@ public class List {
      * @return     { description_of_the_return_value }
      */
     public List subList(final int start, final int end) {
-		List tempList = new List();
-		// write the logic for subList
-		try {
-			if (Math.abs(start - end) == 1) {
-				throw new IndexOutOfBoundsException();
-			}
-			if (start < 0 || end < 0) {
-				throw new IndexOutOfBoundsException();
-			} else if (start == end || start > end) {
-				throw new IndexOutOfBoundsException();
-			}
-			for (int i = start; i < end; i++) {
-				tempList.add(list[i]);
-			}
-			return tempList;
-		} catch (IndexOutOfBoundsException e) {
-			System.out.println("Index Out of Bounds Exception");
-		}
-		return null;
-	}
+        List tempList = new List();
+        // write the logic for subList
+        try {
+            if (Math.abs(start - end) == 1) {
+                throw new IndexOutOfBoundsException();
+            }
+            if (start < 0 || end < 0) {
+                throw new IndexOutOfBoundsException();
+            } else if (start == end || start > end) {
+                throw new IndexOutOfBoundsException();
+            }
+            for (int i = start; i < end; i++) {
+                tempList.add(list[i]);
+            }
+            return tempList;
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Index Out of Bounds Exception");
+        }
+        return null;
+    }
     /*
     Returns a boolean indicating whether the parameter i.e a List object is
     exactly matching with the given list or not.
@@ -392,8 +392,9 @@ public class List {
             // based on the list operation invoke the corresponding method
             switch (tokens[0]) {
             case "count":
-				System.out.println(l.count(Integer.parseInt(tokens[1])));
-				break;
+                System.out.println(l.count
+                    (Integer.parseInt(tokens[1])));
+                break;
             case "add":
                 if (tokens.length == 2) {
                     String[] t = tokens[1].split(",");
