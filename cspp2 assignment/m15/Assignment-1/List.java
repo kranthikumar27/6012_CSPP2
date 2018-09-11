@@ -392,8 +392,7 @@ public class List {
             // based on the list operation invoke the corresponding method
             switch (tokens[0]) {
             case "count":
-                System.out.println(l.count
-                    (Integer.parseInt(tokens[1])));
+                System.out.println(l.count(Integer.parseInt(tokens[1])));
                 break;
             case "add":
                 if (tokens.length == 2) {
