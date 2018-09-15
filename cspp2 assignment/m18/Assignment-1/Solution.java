@@ -116,7 +116,6 @@ public final class Solution {
 		// add the question objects to the quiz class
 		for (int i = 0; i < questionCount; i++) {
 			if (questionCount >= 1) {
-				System.out.println("questions are added to the quiz");
 				if (questionCount == 4) {
 					System.out.println("4 questions are added to the quiz");
 				} else {
@@ -151,5 +150,6 @@ public final class Solution {
 	 */
 	public static void displayScore(final Quiz quiz) {
 		// write your code here to display the score report
+		
 	}
 }
