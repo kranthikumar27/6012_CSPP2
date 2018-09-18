@@ -256,8 +256,7 @@ public final class Solution {
                 System.out.println("|----------------|");
                 try {
                     loadQuestions(s, q, Integer.parseInt(tokens[1]));
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     System.out.println(e.getMessage());
                     flag = false;
                 }
@@ -286,8 +285,9 @@ public final class Solution {
      *
      * @param      scan       The scan
      * @param      quiz       The quiz
-     * @param      q          The question count
+     * @param      q          The quarter
      *
+     * @throws     Exception  { exception_description }
      */
     public static void loadQuestions(final Scanner scan,
         final Quiz quiz, final int q) throws Exception {
@@ -314,7 +314,8 @@ public final class Solution {
             }
             if (Integer.parseInt(tokens[2]) > tokens[1].split(",").length) {
                 throw new Exception(
-                    "Error! Correct answer choice number is out of range for question text "
+                    "Error! Correct answer" + " " 
+                    + "choice number is out of range for question text "
                      + (i + 1));
             }
             if (Integer.parseInt(tokens[THREE]) < 0) {
@@ -356,3 +357,6 @@ public final class Solution {
         System.out.println(quiz.showReport());
     }
 }
+
+
+
