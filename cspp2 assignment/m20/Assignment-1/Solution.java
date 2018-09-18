@@ -195,13 +195,14 @@ class Quiz {
     public String showReport() {
         String s = "";
         int marks = 0;
-        for (Question question: getQuestions()) {
+        for (Question question : getQuestions()) {
             s += question.getQuestionText() + '\n' + ' ';
             if (question.evaluateResponse(question.getResponse())) {
                 s += "Correct Answer! " + '-' + " Marks Awarded: " + question.getMaxMarks();
-                marks += question.getMaxMarks(); 
-            } else {
-                s += "Wrong Answer! " + '-' + " penalty: " + question.getPenalty();
+                marks += question.getMaxMarks();
+            }
+            else {
+                s += "Wrong Answer! " + '-' + " Penalty: " + question.getPenalty();
                 marks += question.getPenalty();
             }
             s += '\n';
