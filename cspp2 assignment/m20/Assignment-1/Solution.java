@@ -262,7 +262,9 @@ public final class Solution {
                 System.out.println("|--------------|");
                 System.out.println("| Score Report |");
                 System.out.println("|--------------|");
-                displayScore(q);
+                if (flag) {
+                    displayScore(q);
+                }
                 break;
                 default:
                 break;
