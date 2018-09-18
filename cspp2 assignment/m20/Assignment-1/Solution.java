@@ -205,8 +205,8 @@ class Quiz {
                 marks += question.getPenalty();
             }
             s += '\n';
+            s += "Total Score: " + marks;
         }
-        s += "Total Score: " + marks;
         return s;
     }
 }
@@ -282,7 +282,7 @@ public final class Solution {
         // tokenize the question line and create the question object
         // add the question objects to the quiz class
         //Scanner sc = new Scanner(System.in);
-        if (q==0) throw new Exception("Quiz does not have questions");
+        if (q == 0) throw new Exception("Quiz does not have questions");
         for (int  i = 0; i < q; i++) {
             String[] tokens = scan.nextLine().split(":");
             for (String token : tokens)
@@ -299,9 +299,8 @@ public final class Solution {
             if (Integer.parseInt(tokens[4]) > 0)
                 throw new Exception("Invalid penalty for " + tokens[0]);
             quiz.addQuestion(new Question(tokens[0], tokens[1].split(","), Integer.parseInt(tokens[2]), Integer.parseInt(tokens[3]), Integer.parseInt(tokens[4])));
-            // System.out.println(i);
         }
-        System.out.println(q+" are added to the quiz");
+        System.out.println(q +" are added to the quiz");
     }
     /**
      * Starts a quiz.
