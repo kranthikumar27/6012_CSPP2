@@ -195,10 +195,12 @@ class Quiz {
         for (Question question : getQuestions()) {
             s += question.getQuestionText() + '\n' + ' ';
             if (question.evaluateResponse(question.getResponse())) {
-                s += "Correct Answer! " + '-' + " Marks Awarded: " + question.getMaxMarks();
+                s += "Correct Answer! " + '-' + " Marks Awarded: "
+                 + question.getMaxMarks();
                 marks += question.getMaxMarks();
             } else {
-                s += "Wrong Answer! " + '-' + " Penalty: " + question.getPenalty();
+                s += "Wrong Answer! " + '-' + " Penalty: "
+                 + question.getPenalty();
                 marks += question.getPenalty();
             }
             s += '\n';
@@ -293,7 +295,9 @@ public final class Solution {
         // tokenize the question line and create the question object
         // add the question objects to the quiz class
         //Scanner sc = new Scanner(System.in);
-        if (q == 0) throw new Exception("Quiz does not have questions");
+        if (q == 0) {
+            throw new Exception("Quiz does not have questions");
+        }
         for (int  i = 0; i < q; i++) {
             String[] tokens = scan.nextLine().split(":");
             for (String token : tokens) {
@@ -305,12 +309,13 @@ public final class Solution {
                 throw new Exception("Error! Malformed question");
             }
             if (tokens[1].split(",").length < 2) {
-                throw new Exception(tokens[0] +
-                 " does not have enough answer choices");
+                throw new Exception(tokens[0]
+                 + " does not have enough answer choices");
             }
             if (Integer.parseInt(tokens[2]) > tokens[1].split(",").length) {
-                throw new Exception
-                ("Error! Correct answer choice number is out of range for question text " + (i + 1));
+                throw new Exception(
+                    "Error! Correct answer choice number is out of range for question text " +
+                     (i + 1));
             }
             if (Integer.parseInt(tokens[THREE]) < 0) {
                 throw new Exception("Invalid max marks for " + tokens[0]);
