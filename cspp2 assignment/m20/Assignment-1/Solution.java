@@ -205,9 +205,10 @@ class Quiz {
                 s += "Wrong Answer! " + '-' + " Penalty: " + question.getPenalty();
                 marks += question.getPenalty();
             }
+            s += "Total Score: " + marks;
             s += '\n';
         }
-        s += "Total Score: " + marks;
+        
         return s;
     }
 }
