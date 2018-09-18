@@ -1,10 +1,10 @@
 import java.util.Scanner;
 import java.util.Arrays;
-/**
+/**.
  * Class for question.
  */
 class Question {
-    /**
+    /**.
      * { var_description }.
      */
     private String questiontext;
@@ -34,7 +34,7 @@ class Question {
     Question() {
 
     }
-    /**
+    /**.
      * Constructs the object.
      *
      * @param      question1       The question 1
@@ -140,7 +140,7 @@ class Question {
  * Class for quiz.
  */
 class Quiz {
-    /**
+    /**.
      * { var_description }.
      */
     private final int onehundred = 100;
@@ -159,7 +159,7 @@ class Quiz {
         questions = new Question[onehundred];
         size = 0;
     }
-    /**
+    /**.
      * Adds a question.
      *
      * @param      q     The question
@@ -168,7 +168,7 @@ class Quiz {
         questions[size++] = q;
         //System.out.println(size);
     }
-    /**
+    /**.
      * Gets the question.
      *
      * @param      index  The index
@@ -179,7 +179,7 @@ class Quiz {
         return questions[index];
     }
 
-    /**
+    /**.
      * Gets the question.
      *
      * @return     The question.
@@ -187,7 +187,7 @@ class Quiz {
     public Question[] getQuestions() {
         return Arrays.copyOf(questions, size);
     }
-    /**
+    /**.
      * Shows the report.
      *
      * @return     { description_of_the_return_value }
@@ -215,25 +215,25 @@ class Quiz {
  * Solution class for code-eval.
  */
 public final class Solution {
-    /**
+    /**.
      * { var_description }
      */
     private static final int THREE = 3;
-    /**
+    /**.
      * { var_description }
      */
     private static final int FOUR = 4;
-    /**
+    /**.
      * { var_description }
      */
     private static final int FIVE = 5;
-    /**
+    /**.
     * Constructs the object.
     */
     private Solution() {
         // leave this blank
     }
-    /**
+    /**.
      * main function to execute test cases.
      *
      * @param      args  The arguments
@@ -303,18 +303,22 @@ public final class Solution {
             for (String token : tokens)
                 if (token.equals(""))
                     throw new Exception("Error! Malformed question");
-            if (tokens.length < FIVE)
+            if (tokens.length < FIVE) {
                 throw new Exception("Error! Malformed question");
-            if (tokens[1].split(",").length < 2)
+            }
+            if (tokens[1].split(",").length < 2) {
                 throw new Exception(tokens[0] + " does not have enough answer choices");
-            if (Integer.parseInt(tokens[2]) > tokens[1].split(",").length)
+            }
+            if (Integer.parseInt(tokens[2]) > tokens[1].split(",").length) {
                 throw new Exception("Error! Correct answer choice number is out of range for question text "+(i+1));
-            if (Integer.parseInt(tokens[3]) < 0)
+            }
+            if (Integer.parseInt(tokens[THREE]) < 0) {
                 throw new Exception("Invalid max marks for " + tokens[0]);
-            if (Integer.parseInt(tokens[4]) > 0)
+            }
+            if (Integer.parseInt(tokens[FOUR]) > 0)
                 throw new Exception("Invalid penalty for " + tokens[0]);
-            quiz.addQuestion(new Question(tokens[0], tokens[1].split(","), Integer.parseInt(tokens[2]),
-             Integer.parseInt(tokens[3]), Integer.parseInt(tokens[4])));
+            quiz.addQuestion(new Question(tokens[0], tokens[1].split(","),
+             Integer.parseInt(tokens[2]), Integer.parseInt(tokens[THREE]), Integer.parseInt(tokens[FOUR])));
         }
         System.out.println(q + " are added to the quiz");
     }
