@@ -128,7 +128,7 @@ class Question {
         String s = "";
         s += questiontext + '(' + maxMarks + ')' + "\n";
         for (String choice: choices) {
-            s += choice + '\t';
+            s += choice +'\t';
         }
         s = s.trim() + '\n'; 
         return s;
