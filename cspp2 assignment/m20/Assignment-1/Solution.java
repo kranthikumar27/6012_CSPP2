@@ -44,7 +44,7 @@ class Question {
      * @param      penalty1        The penalty 1
      */
     Question(final String question1, final String[] choices1,
-        final int correctAnswer1, final int maxMarks1, final int penalty1) {
+             final int correctAnswer1, final int maxMarks1, final int penalty1) {
         this.questiontext = question1;
         this.choices = choices1;
         this.correctAnswer = correctAnswer1;
@@ -59,7 +59,7 @@ class Question {
      *
      * @return     { description_of_the_return_value }
      */
-    
+
     public boolean evaluateResponse(final String choice) {
         return getCorrectAnswer().equals(choice);
     }
@@ -127,10 +127,10 @@ class Question {
     public String toString() {
         String s = "";
         s += questiontext + '(' + maxMarks + ')' + "\n";
-        for (String choice: choices) {
-            s += choice +'\t';
+        for (String choice : choices) {
+            s += choice + '\t';
         }
-        s = s.trim() + '\n'; 
+        s = s.trim() + '\n';
         return s;
     }
 
@@ -200,8 +200,7 @@ class Quiz {
             if (question.evaluateResponse(question.getResponse())) {
                 s += "Correct Answer! " + '-' + " Marks Awarded: " + question.getMaxMarks();
                 marks += question.getMaxMarks();
-            }
-            else {
+            } else {
                 s += "Wrong Answer! " + '-' + " Penalty: " + question.getPenalty();
                 marks += question.getPenalty();
             }
@@ -239,38 +238,37 @@ public final class Solution {
      * @param      args  The arguments
      */
     public static void main(final String[] args) {
-         // instantiate this Quiz
+        // instantiate this Quiz
         Quiz q = new Quiz();
-         // code to read the test cases input file
+        // code to read the test cases input file
         Scanner s = new Scanner(System.in);
         // check if there is one more line to process
         boolean flag = true;
         while (s.hasNext()) {
             // read the line
             String line = s.nextLine();
-             // split the line using space
+            // split the line using space
             String[] tokens = line.split(" ");
-              // based on the list operation invoke the corresponding method
+            // based on the list operation invoke the corresponding method
             switch (tokens[0]) {
-                case "LOAD_QUESTIONS":
+            case "LOAD_QUESTIONS":
                 System.out.println("|----------------|");
                 System.out.println("| Load Questions |");
                 System.out.println("|----------------|");
                 try {
                     loadQuestions(s, q, Integer.parseInt(tokens[1]));
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     System.out.println(e.getMessage());
                     flag = false;
                 }
                 break;
-                case "START_QUIZ":
+            case "START_QUIZ":
                 System.out.println("|------------|");
                 System.out.println("| Start Quiz |");
                 System.out.println("|------------|");
                 startQuiz(s, q, Integer.parseInt(tokens[1]));
                 break;
-                case "SCORE_REPORT":
+            case "SCORE_REPORT":
                 System.out.println("|--------------|");
                 System.out.println("| Score Report |");
                 System.out.println("|--------------|");
@@ -278,7 +276,7 @@ public final class Solution {
                     displayScore(q);
                 }
                 break;
-                default:
+            default:
                 break;
             }
         }
@@ -292,7 +290,7 @@ public final class Solution {
      *
      */
     public static void loadQuestions(final Scanner scan,
-        final Quiz quiz, final int q) throws Exception {
+                                     final Quiz quiz, final int q) throws Exception {
         // write your code here to read the questions from the console
         // tokenize the question line and create the question object
         // add the question objects to the quiz class
@@ -300,25 +298,30 @@ public final class Solution {
         if (q == 0) throw new Exception("Quiz does not have questions");
         for (int  i = 0; i < q; i++) {
             String[] tokens = scan.nextLine().split(":");
-            for (String token : tokens)
-                if (token.equals(""))
+            for (String token : tokens) {
+                if (token.equals("")) {
                     throw new Exception("Error! Malformed question");
-            if (tokens.length < FIVE) {
-                throw new Exception("Error! Malformed question");
+                }
+                if (tokens.length < FIVE) {
+                    throw new Exception("Error! Malformed question");
+                }
+                if (tokens[1].split(",").length < 2) {
+                    throw new Exception(tokens[0] + " does not have enough answer choices");
+                }
+                if (Integer.parseInt(tokens[2]) > tokens[1].split(",").length) {
+                    throw new Exception("Error! Correct answer choice number is out of range for question text " +
+                                        (i + 1));
+                }
+                if (Integer.parseInt(tokens[THREE]) < 0) {
+                    throw new Exception("Invalid max marks for " + tokens[0]);
+                }
+                if (Integer.parseInt(tokens[FOUR]) > 0) {
+                    throw new Exception("Invalid penalty for " + tokens[0]);
+                }
+                quiz.addQuestion(new Question(tokens[0], tokens[1].split(","),
+                                              Integer.parseInt(tokens[2]), Integer.parseInt(tokens[THREE]),
+                                              Integer.parseInt(tokens[FOUR])));
             }
-            if (tokens[1].split(",").length < 2) {
-                throw new Exception(tokens[0] + " does not have enough answer choices");
-            }
-            if (Integer.parseInt(tokens[2]) > tokens[1].split(",").length) {
-                throw new Exception("Error! Correct answer choice number is out of range for question text "+(i+1));
-            }
-            if (Integer.parseInt(tokens[THREE]) < 0) {
-                throw new Exception("Invalid max marks for " + tokens[0]);
-            }
-            if (Integer.parseInt(tokens[FOUR]) > 0)
-                throw new Exception("Invalid penalty for " + tokens[0]);
-            quiz.addQuestion(new Question(tokens[0], tokens[1].split(","),
-             Integer.parseInt(tokens[2]), Integer.parseInt(tokens[THREE]), Integer.parseInt(tokens[FOUR])));
         }
         System.out.println(q + " are added to the quiz");
     }
@@ -330,7 +333,7 @@ public final class Solution {
      * @param      q     The answer count
      */
     public static void startQuiz(final Scanner scan,
-        final Quiz quiz, final int q) {
+                                 final Quiz quiz, final int q) {
         // write your code here to display the quiz questions on the console.
         // read the user responses from the console using scanner object.
         // store the user respone in the question object
