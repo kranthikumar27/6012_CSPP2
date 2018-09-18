@@ -198,10 +198,10 @@ class Quiz {
         for (Question question: getQuestions()) {
             s += question.getQuestionText() + '\n';
             if (question.evaluateResponse(question.getResponse())) {
-                s += "Correct Answer!" + '-' + " Marks Awarded: " + question.getMaxMarks();
+                s += "Correct Answer! " + '-' + " Marks Awarded: " + question.getMaxMarks();
                 marks += question.getMaxMarks(); 
             } else {
-                s += "Wrong Answer!" + '-' + " penalty: " + question.getPenalty();
+                s += "Wrong Answer! " + '-' + " penalty: " + question.getPenalty();
                 marks += question.getPenalty();
             }
             s += '\n';
