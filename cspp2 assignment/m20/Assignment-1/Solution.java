@@ -59,7 +59,6 @@ class Question {
      *
      * @return     { description_of_the_return_value }
      */
-    
     public boolean evaluateResponse(final String choice) {
         return getCorrectAnswer().equals(choice);
     }
@@ -128,9 +127,9 @@ class Question {
         String s = "";
         s += questiontext + '(' + maxMarks + ')' + "\n";
         for (String choice: choices) {
-            s += choice +'\t';
+            s += choice + '\t';
         }
-        s = s.trim() + '\n'; 
+        s = s.trim() + '\n';
         return s;
     }
 
