@@ -215,9 +215,21 @@ class Quiz {
  * Solution class for code-eval.
  */
 public final class Solution {
-     /**
-     * Constructs the object.
+    /**
+     * { var_description }
      */
+    private static final int THREE = 3;
+    /**
+     * { var_description }
+     */
+    private static final int FOUR = 4;
+    /**
+     * { var_description }
+     */
+    private static final int FIVE = 5;
+    /**
+    * Constructs the object.
+    */
     private Solution() {
         // leave this blank
     }
@@ -291,7 +303,7 @@ public final class Solution {
             for (String token : tokens)
                 if (token.equals(""))
                     throw new Exception("Error! Malformed question");
-            if (tokens.length < 5)
+            if (tokens.length < FIVE)
                 throw new Exception("Error! Malformed question");
             if (tokens[1].split(",").length < 2)
                 throw new Exception(tokens[0] + " does not have enough answer choices");
@@ -301,9 +313,10 @@ public final class Solution {
                 throw new Exception("Invalid max marks for " + tokens[0]);
             if (Integer.parseInt(tokens[4]) > 0)
                 throw new Exception("Invalid penalty for " + tokens[0]);
-            quiz.addQuestion(new Question(tokens[0], tokens[1].split(","), Integer.parseInt(tokens[2]), Integer.parseInt(tokens[3]), Integer.parseInt(tokens[4])));
+            quiz.addQuestion(new Question(tokens[0], tokens[1].split(","), Integer.parseInt(tokens[2]),
+             Integer.parseInt(tokens[3]), Integer.parseInt(tokens[4])));
         }
-        System.out.println(q +" are added to the quiz");
+        System.out.println(q + " are added to the quiz");
     }
     /**
      * Starts a quiz.
