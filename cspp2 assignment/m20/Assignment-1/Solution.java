@@ -132,8 +132,6 @@ class Question {
         s = s.trim() + '\n';
         return s;
     }
-
-
 }
 /**
  * Class for quiz.
@@ -199,8 +197,7 @@ class Quiz {
             if (question.evaluateResponse(question.getResponse())) {
                 s += "Correct Answer! " + '-' + " Marks Awarded: " + question.getMaxMarks();
                 marks += question.getMaxMarks();
-            }
-            else {
+            } else {
                 s += "Wrong Answer! " + '-' + " Penalty: " + question.getPenalty();
                 marks += question.getPenalty();
             }
