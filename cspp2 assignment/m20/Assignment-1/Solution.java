@@ -205,8 +205,8 @@ class Quiz {
                 marks += question.getPenalty();
             }
             s += '\n';
-            s += "Total Score: " + marks;
         }
+        s += "Total Score: " + marks;
         return s;
     }
 }
