@@ -42,6 +42,7 @@ class ShoppingCart {
 	}
 	public void addToCatalog(Item item) {
 		catalog[catalogCount++] = item;
+
 	}
 	public void addToCart(Item item) {
 		int flag = 0;
@@ -52,24 +53,28 @@ class ShoppingCart {
 			}
 		}
 		if (flag != 1) {
+
 			cart[cartCount++] = item;
 		}
+
+
 	}
 	public void removeFromCart(Item item) {
-		int position = 0;
+		int pos = 0;
 		int flag = 0;
 		for (int i = 0; i < cartCount; i++) {
 			if (cart[i].getName().equals(item.getName())) {
 				cart[i].setQuantity(cart[i].getQuantity() - item.getQuantity());
 				if (cart[i].getQuantity() == 0) {
 					flag = 1;
-					position = i;
+					pos = i;
 					break;
 				}
 			}
+
 		}
 		if (flag == 1) {
-			for (int i = position; i < cartCount; i++) {
+			for (int i = pos; i < cartCount; i++) {
 				cart[i] = cart[i + 1];
 			}
 			cart[cartCount - 1] = null;
@@ -79,12 +84,13 @@ class ShoppingCart {
 	public void showCart() {
 		for (int i = 0; i < cartCount; i++) {
 			System.out.println(cart[i].getName() + " " + cart[i].getQuantity());
+
 		}
+
 	}
 	public void showCatalog() {
 		for ( int i = 0; i < catalogCount; i++) {
-			System.out.println(catalog[i].getName() + " " +
-			 catalog[i].getQuantity() + " " + catalog[i].getPrice());
+			System.out.println(catalog[i].getName() + " " + catalog[i].getQuantity() + " " + catalog[i].getPrice());
 		}
 	}
 	public double getTotalAmount() {
@@ -107,8 +113,7 @@ class ShoppingCart {
 	}
 	public void applyCoupon(String coupon) {
 		if (this.disc == 0.0) {
-			if (coupon.equals("IND10") || coupon.equals("IND20") ||
-			 coupon.equals("IND30") || coupon.equals("IND50")) {
+			if (coupon.equals("IND10") || coupon.equals("IND20") || coupon.equals("IND30") || coupon.equals("IND50")) {
 				this.disc = Double.parseDouble(coupon.substring(3, coupon.length()));
 			} else {
 				System.out.println("Invalid coupon");
@@ -129,7 +134,7 @@ class ShoppingCart {
 		}
 		System.out.println("Total:" + getTotalAmount());
 		System.out.println("Disc%:" + (getTotalAmount() / 100) * disc);
-		System.out.println("Tax:" + (getTotalAmount() - (getTotalAmount()/100) * disc) * 0.15);
+		System.out.println("Tax:" + (getTotalAmount() -(getTotalAmount()/100) * disc)*0.15);
 		System.out.println("Payable amount: " + getPayableAmount());
 	}
 }
@@ -147,8 +152,7 @@ class Solution {
 			switch (tokens[0]) {
 			case "Item":
 				String[] data = tokens[1].split(",");
-				sc.addToCatalog(new Item(data[0], Integer.parseInt(data[1]),
-				 Double.parseDouble(data[2])));
+				sc.addToCatalog(new Item(data[0], Integer.parseInt(data[1]), Double.parseDouble(data[2])));
 				break;
 			case "catalog":
 				sc.showCatalog();
