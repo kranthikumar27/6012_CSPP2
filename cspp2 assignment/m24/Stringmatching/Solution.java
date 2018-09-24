@@ -1,129 +1,138 @@
-import java.util.Scanner;
-import java.io.FileReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.NoSuchElementException;
-
-/**this class is to maintain.
-*complete details of two files.
-*/
-class Data {
-    /** this is an empty constructor.
-    */
-    Data() {
-    }
-    /**this method is to convert the.
-    *file document text to string
-    *@param file File
-    *@return str returns string of that text.
-    */
-    public static String toText(final File file) {
-        String str = "";
-        try {
-            Scanner input = new Scanner(new FileReader(file));
-            StringBuilder text = new StringBuilder();
-            while (input.hasNext()) {
-                text.append(input.next());
-                text.append(" ");
-            }
-            input.close();
-            str = text.toString();
-        } catch (FileNotFoundException e) {
-            System.out.println("No file");
-        }
-        return str;
-    }
-    /**this method is to give the.
-     *document distance.
-     *@param textOne first file string
-     *@param textTwo second file string
-     *@return document distance
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.util.Scanner;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+import java.util.ArrayList;
+/**
+ * Class for plagiarism.
+ */
+class Plagiarism {
+    /**
+     * lss.
      */
-
-    public double stringMatching(final String textOne, final String textTwo) {
-        int lengthOne = textOne.length();
-        int lengthTwo = textTwo.length();
-        double totalLength = lengthOne + lengthTwo;
-        int max = 0;
-        double lcs = 0;
-        final int hundred = 100;
-        int[][] array = new int[lengthOne][lengthTwo];
-        for (int i = 0; i < lengthOne; i++) {
-            for (int j = 0; j < lengthTwo; j++) {
-                if (textOne.charAt(i) == textTwo.charAt(j)) {
-                    if (i == 0 || j == 0) {
-                        array[i][j] = 1;
-                    } else {
-                        array[i][j] = array[i - 1][j - 1] + 1;
-                    }
-                    if (max < array[i][j]) {
-                        max = array[i][j];
-                    }
-                }
-            }
-        }
-        lcs = (((max * 2) / totalLength) * hundred);
-        return lcs;
-    }
-}
-/** this is the solution class.
-*/
-public final class Solution {
-    /** an empty constructor.
+    private ArrayList<String> lss;
+    /**
+    * Constructs the object.
     */
-    private Solution() {
-
+    Plagiarism() {
+        lss = new ArrayList<String>();
     }
     /**
-     * this is main method.
+     * loadlss.
      *
-     * @param      args  The arguments
+     * @param      text  The text.
      */
-    public static void main(final String[] args) {
-        try  {
-        Scanner scan = new Scanner(System.in);
-        String input = scan.nextLine();
-        File files = new File(input);
-        Data obj = new Data();
-        File[] fileList = files.listFiles();
-        int length = fileList.length;
-        double maxValue = 0;
-        final int hundred = 100;
-        String result = "";
-        double[][] fileMatrix = new double[length][length];
-        for (int i = 0; i < length; i++) {
-            for (int j = 0; j < length; j++) {
-                if (i == j) {
-                    fileMatrix[i][j] = hundred;
-                } else {
-                    fileMatrix[i][j] = obj.stringMatching(
-                        obj.toText(fileList[i]), obj.toText(fileList[j]));
-                    if (maxValue < fileMatrix[i][j]) {
-                        maxValue = fileMatrix[i][j];
-                        result = "Maximum similarity is between "
-                        + fileList[i].getName() + " and "
-                        + fileList[j].getName();
+    public void loadlss(final String text) {
+        lss.add(text);
+    }
+    /**
+     * longestsubstring.
+     */
+    public void longestsubstring() {
+        System.out.print("      " + "\t\t");
+        for (int m = 1; m <= lss.size(); m++) {
+            System.out.print("File");
+            System.out.print(m);
+            System.out.print(".txt");
+            System.out.print("\t");
+        }
+        System.out.println();
+        ArrayList<Long> listsub = new ArrayList<Long>();
+        int x = 1;
+        int[] z = new int[1 + 2];
+        for (String i : lss) {
+            String s = "File" + Integer.toString(x) + ".txt";
+            int y = 1;
+            System.out.print(s + "\t");
+            for (String j : lss) {
+                String sub = "";
+                for (int k = 0; k < j.length();) {
+                    if (i.length() == 0) {
+                        break;
                     }
+                    for (int l = k; l < j.length(); l++) {
+                        if ((i.contains(j.substring(k, l + 1))
+                         && sub.length() <= j.substring(k, l).length())) {
+                            sub = j.substring(k, l + 1);
+                        }
+                    }
+                    k += sub.length();
                 }
-            }
-        }
-        System.out.print("      \t");
-        for (int i = 0; i < length - 1; i++) {
-            System.out.print("\t" + fileList[i].getName());
-        }
-        System.out.println("\t" + fileList[length - 1].getName());
-        for (int i = 0; i < length; i++) {
-            System.out.print(fileList[i].getName() + "\t");
-            for (int j = 0; j < length; j++) {
-                    System.out.print(
-                        String.format("%.1f", fileMatrix[i][j]) + "\t\t");
+                final int number = 100;
+                double a = sub.length();
+                double b = i.length();
+                double c = j.length();
+                double d = (double) (Math.round((a * 2 / (b + c)) * number));
+                if (z[0] < (int) d && (int) d != number) {
+                    z[0] = (int) d;
+                    z[1] = x;
+                    z[2] = y;
+                }
+                if (i.equals(j)) {
+                    System.out.print((double) number);
+                } else {
+                    System.out.print(d);
+                }
+                System.out.print("\t\t");
+                y++;
             }
             System.out.println();
+            x++;
         }
-     System.out.println(result);
-    } catch (NoSuchElementException e) {
-        System.out.println("Empty Directory");
-    }
+        if (z[1] != 0) {
+            System.out.println("Maximum similarity is between file"
+ + Integer.toString(z[1]) + ".txt and file" + Integer.toString(z[2]) + ".txt");
+        }
     }
 }
+/**
+ * Class for solution.
+ */
+public final class Solution {
+    /**
+    * Constructs the object.
+    */
+    private Solution() {
+        //Empty.
+    }
+
+    /**
+    * {Main method}.
+    *
+    * @param      args       The arguments
+    *
+    * @throws     Exception  {Exception class}
+    */
+    public static void main(final String[] args) throws Exception {
+        Plagiarism pl = new Plagiarism();
+        Scanner scan = new Scanner(System.in);
+        try {
+            File folder = new File(scan.next());
+            File[] listOfFiles = folder.listFiles();
+            for (File i : listOfFiles) {
+                FileReader fr = new FileReader(i);
+                BufferedReader br = new BufferedReader(fr);
+                String buffer = "";
+                String s;
+                while (((s = br.readLine()) != null)) {
+                    buffer += s;
+                }
+                Pattern p = Pattern.compile("[^a-z A-Z 0-9]");
+                Matcher m = p.matcher(buffer);
+                String words = m.replaceAll("").replace(".", " ").toLowerCase();
+                br.close();
+                fr.close();
+                pl.loadlss(words);
+            }
+        } catch (Exception e) {
+            System.out.println("Empty Directory");
+        }
+        pl.longestsubstring();
+    }
+}
+
+
+
 
