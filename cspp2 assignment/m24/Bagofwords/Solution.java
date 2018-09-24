@@ -1,154 +1,164 @@
-import java.util.Scanner;
-import java.io.FileReader;
-import java.util.Map;
-import java.util.HashMap;
+// import java.io.*;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.NoSuchElementException;
-/**this class is to maintain.
-*complete details of two files.
-*/
-class Data {
-    /** this is an empty constructor.
-    */
-    Data() {
-    }
-    /**this method is to convert the.
-    *file document text to string
-    *@param file File
-    *@return str returns string of that text.
-    */
-    public static String toText(final File file) {
-        String str = "";
-        try {
-            Scanner input = new Scanner(new FileReader(file));
-            StringBuilder text = new StringBuilder();
-            while (input.hasNext()) {
-                text.append(input.next());
-                text.append(" ");
-            }
-            input.close();
-            str = text.toString();
-        } catch (FileNotFoundException e) {
-            System.out.println("No file");
-        }
-        return str;
-    }
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.util.Scanner;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+import java.util.HashMap;
+import java.util.ArrayList;
+/**
+ * Class for plagiarism.
+ */
+class Plagiarism {
     /**
-     * to remove the unwanted characters.
+     * {Array list of Hashmap}.
+     */
+    private ArrayList<HashMap> textList;
+    /**
+     * {Hashmap of freqencies}.
+     */
+    private HashMap<String, Integer> frequency;
+    /**
+     * Constructs the object.
+     */
+    Plagiarism() {
+        textList = new ArrayList<HashMap>();
+    }
+
+    /**
+     * {Method to load the words}.
      *
      * @param      text  The text
-     *
-     * @return map which contains
-     * frequency of words.
      */
-    public Map remove(final String text) {
-        text.toLowerCase();
-        text.replaceAll("[0-9_]", "");
+    public void load(final String text) {
+        frequency = new HashMap<String, Integer>();
         String[] words = text.split(" ");
-        Map<String, Integer> map = new HashMap<>();
-        for (String element : words) {
-         if (element.length() > 0) {
-            if (!(map.containsKey(element))) {
-                map.put(element, 1);
-            } else {
-                map.put(element, map.get(element) + 1);
-            }
-        }
-    }
-        return map;
-    }
-    /**this method is to give the.
-     *document distance.
-     *@param textOne first file string
-     *@param textTwo second file string
-     *@return document distance
-     */
-
-    public int similarity(final String textOne, final String textTwo) {
-        double numerator = 0;
-        double denominator = 1;
-        double sumOne = 0;
-        double sumTwo = 0;
-        final int hundred = 100;
-        Map<String, Integer> mapOne = remove(textOne);
-        Map<String, Integer> mapTwo = remove(textTwo);
-        for (String element: mapOne.keySet()) {
-            for (String item: mapTwo.keySet()) {
-                if (element.equals(item)) {
-                    numerator += mapOne.get(element) * mapTwo.get(item);
+        for (String i : words) {
+            int count = 0;
+            for (String j : words) {
+                if (i.equals(j)) {
+                    count += 1;
                 }
             }
+            frequency.put(i, count);
         }
-
-        for (String word: mapOne.keySet()) {
-            sumOne += mapOne.get(word) * mapOne.get(word);
-        }
-        for (String word: mapTwo.keySet()) {
-            sumTwo += mapTwo.get(word) * mapTwo.get(word);
-        }
-        denominator = Math.sqrt(sumOne) * Math.sqrt(sumTwo);
-        double documentDistance = (
-            (numerator / denominator) * hundred);
-        return (int) (documentDistance);
-    }
-}
-/** this is the solution class.
-*/
-public final class Solution {
-    /** an empty constructor.
-    */
-    private Solution() {
-
+        textList.add(frequency);
     }
     /**
-     * this is main method.
-     *
-     * @param      args  The arguments
+     * {Bag of Words}.
      */
-    public static void main(final String[] args) {
-        try  {
-        Scanner scan = new Scanner(System.in);
-        String input = scan.nextLine();
-        File files = new File(input);
-        Data obj = new Data();
-        File[] fileList = files.listFiles();
-        int length = fileList.length;
-        int maxValue = 0;
-        final int hundred = 100;
-        String result = "";
-        int[][] fileMatrix = new int[length][length];
-        for (int i = 0; i < length; i++) {
-            for (int j = 0; j < length; j++) {
-                if (i == j) {
-                    fileMatrix[i][j] = hundred;
-                } else {
-                    fileMatrix[i][j] = obj.similarity(
-                        obj.toText(fileList[i]), obj.toText(fileList[j]));
-                    if (maxValue < fileMatrix[i][j]) {
-                        maxValue = fileMatrix[i][j];
-                        result = "Maximum similarity is between "
-                        + fileList[i].getName() + " and "
-                        + fileList[j].getName();
+    public void bagofwords() {
+        ArrayList<int[]> bag = new ArrayList<int[]>();
+        int[] z = new int[1 + 2];
+        for (HashMap<String, Integer> i : textList) {
+            for (HashMap<String, Integer> j : textList) {
+                int totalcount = 0;
+                int count1 = 0;
+                int count2 = 0;
+                int[] b = new int[2 + 1];
+                for (String k : i.keySet()) {
+                    count1 += i.get(k) * i.get(k);
+                    count2 = 0;
+                    for (String l : j.keySet()) {
+                        count2 += j.get(l) * j.get(l);
+                        if (k.equals(l)) {
+                            totalcount += i.get(k) * j.get(l);
+                        }
                     }
                 }
+                b[0] = count1 - 1;
+                b[1] = count2 - 1;
+                b[2] = totalcount - 1;
+                bag.add(b);
             }
         }
-        System.out.print("      \t");
-        for (int i = 0; i < length - 1; i++) {
-            System.out.print("\t" + fileList[i].getName());
+
+        int length = textList.size();
+        int c0 = length;
+        int c1 = 1;
+        System.out.print("      " + "\t\t");
+        for (int m = 1; m <= length; m++) {
+            System.out.print("File");
+            System.out.print(m);
+            System.out.print(".txt");
+            System.out.print("\t");
         }
-        System.out.println("\t" + fileList[length - 1].getName());
-        for (int i = 0; i < length; i++) {
-            System.out.print(fileList[i].getName() + "\t");
-            for (int j = 0; j < length; j++) {
-                    System.out.print(fileMatrix[i][j] + "\t\t");
+        System.out.println();
+        for (int[] x : bag) {
+            if ((c0 % length) == 0) {
+                System.out.print("File");
+                System.out.print(c1);
+                System.out.print(".txt" + "\t");
             }
-            System.out.println();
+            final int number = 100;
+            long s = Math.round(
+                         x[2] / (Math.sqrt(x[0]) * Math.sqrt(x[1])) * number);
+            if (x[0] == 0 || x[1] == 0) {
+                System.out.print("0");
+            } else {
+                System.out.print(s);
+            }
+            if (z[0] < (int) s && (int) s != number) {
+                z[0] = (int) s;
+                z[2] = (int) (c0 - (length - 1)) / c1;
+                z[1] = c1;
+            }
+
+            System.out.print("\t\t");
+            c0++;
+            if ((c0 % length) == 0) {
+                System.out.println();
+                c1++;
+            }
         }
-     System.out.println(result);
-    } catch (NoSuchElementException e) {
-        System.out.println("empty directory");
+        if (z[1] != 0) {
+            System.out.println("Maximum similarity is between File"
+ + Integer.toString(z[1]) + ".txt and File" + Integer.toString(z[2]) + ".txt");
+        }
     }
+}
+/**
+ * Class for solution.
+ */
+public final class Solution {
+    /**
+     * Constructs the object.
+     */
+    private Solution() {
+        //Empty.
+    }
+    /**
+     * {Main method}.
+     *
+     * @param      args       The arguments
+     *
+     * @throws     Exception  {Exception class}
+     */
+    public static void main(final String[] args) throws Exception {
+        Plagiarism pl = new Plagiarism();
+        Scanner scan = new Scanner(System.in);
+        try {
+            File folder = new File(scan.next());
+            File[] listOfFiles = folder.listFiles();
+            for (File i : listOfFiles) {
+                FileReader fr = new FileReader(i);
+                BufferedReader br = new BufferedReader(fr);
+                String buffer = "";
+                String s;
+                while (((s = br.readLine()) != null)) {
+                    buffer += s;
+                }
+                Pattern p = Pattern.compile("[^a-z A-Z 0-9]");
+                Matcher m = p.matcher(buffer);
+                String words = m.replaceAll("").replace(".", " ").toLowerCase();
+                br.close();
+                fr.close();
+                pl.load(words);
+            }
+        } catch (Exception e) {
+            System.out.println("empty directory");
+        }
+        pl.bagofwords();
     }
 }
